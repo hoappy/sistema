@@ -8,6 +8,12 @@ use App\Mutual;
 
 class MutualController extends Controller
 {
+    public function selectMutual(Request $request){
+        if (!$request->ajax()) return redirect('/');
+        $mutuals = Mutual::where('estado','=','1')
+        ->select('id_mutual','nombre')->orderBy('nombre', 'asc')->get();
+        return ['mutuals' => $mutuals];
+    }
     
     public function index(Request $request)
     {

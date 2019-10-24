@@ -132,22 +132,78 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="text-input">Nombres</label>
+                                    <label class="col-md-3 form-control-label" for="text-input">Razon Social</label>
                                     <div class="col-md-9">
-                                        <input type="text" v-model="nombre" class="form-control" placeholder="Ingrese Nombres del Empresa">
-                                        
+                                        <input type="text" v-model="razonSocial" class="form-control" placeholder="Ingrese Razon Social de la Empresa">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="text-input">Apellido Paterno</label>
+                                    <label class="col-md-3 form-control-label" for="text-input">Giro</label>
                                     <div class="col-md-9">
-                                        <input type="text" v-model="apellido1" class="form-control" placeholder="Ingrese Apellido Paterno del Empresa">
+                                        <input type="text" v-model="giro" class="form-control" placeholder="Ingrese Giro de la Empresa">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="text-input">Apellido Materno</label>
+                                    <label class="col-md-3 form-control-label" for="text-input">Representante</label>
                                     <div class="col-md-9">
-                                        <input type="text" v-model="apellido2" class="form-control" placeholder="Ingrese Materno Paterno del Empresa">
+                                        <select class="form-control" v-model="id_representante">
+                                            <option value="0" disabled>Seleccione</option>
+                                            <option v-for="representante in arrayRepresentante" :key="representante.id_representante" :value="representante.id_representante" v-text="representante.nombre + ' ' + representante.apellido1 + ' ' + representante.apellido2"></option>
+                                        </select> 
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="text-input">Mutual</label>
+                                    <div class="col-md-9">
+                                        <select class="form-control" v-model="id_mutual">
+                                            <option value="0" disabled>Seleccione</option>
+                                            <option v-for="mutual in arrayMutual" :key="mutual.id_mutual" :value="mutual.id_mutual" v-text="mutual.nombre"></option>
+                                        </select> 
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="text-input">cdc</label>
+                                    <div class="col-md-9">
+                                        <select class="form-control" v-model="id_cdc">
+                                            <option value="0" disabled>Seleccione</option>
+                                            <option v-for="cdc in arrayCdc" :key="cdc.id_cdc" :value="cdc.id_cdc" v-text="cdc.nombre"></option>
+                                        </select> 
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="text-input">Correo</label>
+                                    <div class="col-md-9">
+                                        <input type="text" v-model="correo" class="form-control" placeholder="Ingrese el Correo de la Empresa">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="text-input">telefono</label>
+                                    <div class="col-md-9">
+                                        <input type="number" v-model="telefono" class="form-control" placeholder="Ingrese Telefono o cCelular de la Empresa">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="text-input">Direccion</label>
+                                    <div class="col-md-9">
+                                        <input type="text" v-model="direccion" class="form-control" placeholder="Ingrese la Direccion de la Empresa">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="text-input">Region</label>
+                                    <div class="col-md-9">
+                                        <input type="text" v-model="region" class="form-control" placeholder="Ingrese la Region de la Empresa">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="text-input">Comuna</label>
+                                    <div class="col-md-9">
+                                        <input type="text" v-model="comuna" class="form-control" placeholder="Ingrese la Comuna de la Empresa">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="text-input">Ciudad</label>
+                                    <div class="col-md-9">
+                                        <input type="text" v-model="ciudad" class="form-control" placeholder="Ingrese la Ciudad de la Empresa">
                                     </div>
                                 </div>
                                 <div v-show="errorEmpresa" class="form-group row div-error">
@@ -208,7 +264,10 @@
                 },
                 offset : 3,
                 criterio : 'nombre',
-                buscar : ''
+                buscar : '',
+                arrayRepresentante : [],
+                arrayCdc :[],
+                arrayMutual: []
             }
         },
         computed:{
@@ -241,6 +300,42 @@
             }
         },
         methods : {
+            selectRepresentante(){
+                let me=this;
+                var url= '/representante/selectRepresentante';
+                axios.get(url).then(function (response) {
+                    //console.log(response);
+                    var respuesta= response.data;
+                    me.arrayRepresentante = respuesta.representantes;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            },
+            selectCdc(){
+                let me=this;
+                var url= '/cdc/selectCdc';
+                axios.get(url).then(function (response) {
+                    //console.log(response);
+                    var respuesta= response.data;
+                    me.arrayCdc = respuesta.cdcs;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            },
+            selectMutual(){
+                let me=this;
+                var url= '/mutual/selectMutual';
+                axios.get(url).then(function (response) {
+                    //console.log(response);
+                    var respuesta= response.data;
+                    me.arrayMutual = respuesta.mutuals;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            },
             listarEmpresa (page,buscar,criterio){
                 let me=this;
                 var url= '/empresa?page=' + page + '&buscar='+ buscar + '&criterio='+ criterio;
@@ -270,9 +365,17 @@
                 axios.post('/empresa/registrar',{
                     'rut': this.rut,
                     'dv': this.dv,
-                    'nombre': this.nombre,
-                    'apellido1': this.apellido1,
-                    'apellido2': this.apellido2
+                    'razonSocial': this.razonSocial,
+                    'giro': this.giro,
+                    'id_representante': this.id_representante,
+                    'id_mutual': this.id_mutual,
+                    'id_cdc': this.id_cdc,
+                    'correo': this.correo,
+                    'telefono': this.telefono,
+                    'direccion': this.direccion,
+                    'region': this.region,
+                    'comuna': this.comuna,
+                    'ciudad': this.ciudad,
                 }).then(function (response) {
                     me.cerrarModal();
                     me.listarEmpresa(1,'','nombre');
@@ -290,9 +393,17 @@
                 axios.put('/empresa/actualizar',{
                     'rut': this.rut,
                     'dv': this.dv,
-                    'nombre': this.nombre,
-                    'apellido1': this.apellido1,
-                    'apellido2': this.apellido2,
+                    'razonSocial': this.razonSocial,
+                    'giro': this.giro,
+                    'id_representante': this.id_representante,
+                    'id_mutual': this.id_mutual,
+                    'id_cdc': this.id_cdc,
+                    'correo': this.correo,
+                    'telefono': this.telefono,
+                    'direccion': this.direccion,
+                    'region': this.region,
+                    'comuna': this.comuna,
+                    'ciudad': this.ciudad,
                     'id_empresa': this.id_id_empresa
                 }).then(function (response) {
                     me.cerrarModal();
@@ -385,9 +496,17 @@
 
                 if (!this.rut) this.errorMostrarMsjEmpresa.push("El RUT del Empresa no puede estar vacío.");
                 if (!this.dv) this.errorMostrarMsjEmpresa.push("El Digito  Verificador no puede estar vacío.");
-                if (!this.nombre) this.errorMostrarMsjEmpresa.push("El nombre de la Empresa no puede estar vacío.");
-                if (!this.apellido1) this.errorMostrarMsjEmpresa.push("El apellido parterno del Empresa no puede estar vacío.");
-                if (!this.apellido2) this.errorMostrarMsjEmpresa.push("El apellido materno del Empresa no puede estar vacío.");
+                if (!this.razonSocial) this.errorMostrarMsjEmpresa.push("El campo Razon Social no puede estar vacío.");
+                if (!this.giro) this.errorMostrarMsjEmpresa.push("El campo Giro no puede estar vacío.");
+                if (!this.id_mutual) this.errorMostrarMsjEmpresa.push("Tiene que seleccionar un Representante para la Empresa.");
+                if (!this.id_mutual) this.errorMostrarMsjEmpresa.push("Tiene que seleccionar una Mutual para la Empresa.");
+                if (!this.id_cdc) this.errorMostrarMsjEmpresa.push("Tiene que seleccionar una Caja de Compensacion para la Empresa.");
+                if (!this.correo) this.errorMostrarMsjEmpresa.push("El campo Razon Social no puede estar vacío.");
+                if (!this.telefono) this.errorMostrarMsjEmpresa.push("El campo Telefono no puede estar vacío.");
+                if (!this.direccion) this.errorMostrarMsjEmpresa.push("El campo Direccion no puede estar vacío.");
+                if (!this.region) this.errorMostrarMsjEmpresa.push("El campo Region no puede estar vacío.");
+                if (!this.comuna) this.errorMostrarMsjEmpresa.push("El campo Comuna no puede estar vacío.");
+                if (!this.ciudad) this.errorMostrarMsjEmpresa.push("El campo Ciudad no puede estar vacío.");
 
                 if (this.errorMostrarMsjEmpresa.length) this.errorEmpresa = 1;
 
@@ -396,11 +515,19 @@
             cerrarModal(){
                 this.modal=0;
                 this.tituloModal='';
-                this.rut= '';
+                this.rut= 0;
                 this.dv= '';
-                this.nombre= '';
-                this.apellido1= '';
-                this.apellido2= '';
+                this.razonSocial= '';
+                this.giro= '';
+                this.id_representante= 0;
+                this.id_mutual= 0;
+                this.id_cdc= 0;
+                this.correo= '';
+                this.telenofo= 0;
+                this.direccion= '';
+                this.region= '';
+                this.comuna= '';
+                this.ciudad= '';
             },
             abrirModal(modelo, accion, data = []){
                 switch(modelo){
@@ -411,11 +538,19 @@
                             {
                                 this.modal = 1;
                                 this.tituloModal = 'Registrar Empresa';
-                                this.rut= '';
+                                this.rut= 0;
                                 this.dv= '';
-                                this.nombre= '';
-                                this.apellido1= '';
-                                this.apellido2= '';
+                                this.razonSocial= '';
+                                this.giro= '';
+                                this.id_representante= 0;
+                                this.id_mutual= 0;
+                                this.id_cdc= 0;
+                                this.correo= '';
+                                this.telefono= 0;
+                                this.direccion= '';
+                                this.region= '';
+                                this.comuna= '';
+                                this.ciudad= '';
                                 this.tipoAccion = 1;
                                 break;
                             }
@@ -423,19 +558,30 @@
                             {
                                 //console.log(data);
                                 this.modal=1;
-                                this.tituloModal='Actualizar Representannte';
-                                this.tipoAccion=2;
-                                this.id_id_empresa=data['id_empresa'];
+                                this.tituloModal = 'Actualizar Empresa';
+                                this.tipoAccion = 2;
+                                this.id_id_empresa = data['id_empresa'];
                                 this.rut = data['rut'];
                                 this.dv = data['dv'];
-                                this.nombre = data['nombre'];
-                                this.apellido1 = data['apellido1'];
-                                this.apellido2 = data['apellido2'];
+                                this.razonSocial = data['razonSocial'];
+                                this.giro = data['giro'];
+                                this.id_representante = data['id_representante'];
+                                this.id_mutual = data['id_mutual'];
+                                this.id_cdc = data['id_cdc'];
+                                this.correo = data['correo'];
+                                this.telefono = data['telefono'];
+                                this.direccion = data['direccion'];
+                                this.region = data['region'];
+                                this.comuna = data['comuna'];
+                                this.ciudad = data['ciudad'];
                                 break;
                             }
                         }
                     }
                 }
+                this.selectRepresentante();
+                this.selectCdc();
+                this.selectMutual();
             }
         },
         mounted() {

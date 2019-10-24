@@ -8,11 +8,13 @@ use App\Cdc;
 
 class CdcController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function selectCdc(Request $request){
+        if (!$request->ajax()) return redirect('/');
+        $cdcs = Cdc::where('estado','=','1')
+        ->select('id_cdc','nombre')->orderBy('nombre', 'asc')->get();
+        return ['cdcs' => $cdcs];
+    }
+
     public function index(Request $request)
     {
         if (!$request->ajax()) return redirect('/');

@@ -8,6 +8,12 @@ use App\Representante;
 
 class RepresentanteController extends Controller
 {
+    public function selectRepresentante(Request $request){
+        if (!$request->ajax()) return redirect('/');
+        $representantes = Representante::where('estado','=','1')
+        ->select('id_representante','nombre','apellido1','apellido2')->orderBy('nombre', 'asc')->get();
+        return ['representantes' => $representantes];
+    }
     
     public function index(Request $request)
     {
