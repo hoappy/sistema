@@ -18,6 +18,7 @@ window.Vue = require('vue');
 Vue.component('cdc', require('./components/Cdc.vue'));
 Vue.component('mutual', require('./components/Mutual.vue'));
 Vue.component('representante', require('./components/Representante.vue'));
+Vue.component('empresa', require('./components/Emprea.vue'));
 
 const app = new Vue({
     el: '#app',

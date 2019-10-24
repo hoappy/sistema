@@ -32,3 +32,9 @@ Route::post('/representante/registrar', 'representanteController@store');
 Route::put('/representante/actualizar', 'representanteController@update');
 Route::put('/representante/desactivar', 'representanteController@desactivar');
 Route::put('/representante/activar', 'representanteController@activar');
+
+Route::get('/empresa', 'empresaController@index');
+Route::post('/empresa/registrar', 'empresaController@store');
+Route::put('/empresa/actualizar', 'empresaController@update');
+Route::put('/empresa/desactivar', 'empresaController@desactivar');
+Route::put('/empresa/activar', 'empresaController@activar');

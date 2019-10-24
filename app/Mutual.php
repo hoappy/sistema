@@ -11,4 +11,7 @@ class Mutual extends Model
     protected $fillable=[
         'nombre', 'descripcion', 'estado'
     ];
+    public function empresaMutual(){
+        return $this->hasOne('App\Empresa');
+    }
 }

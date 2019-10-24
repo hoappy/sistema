@@ -1,7 +1,11 @@
     @extends('principal')
     @section('contenido')
         <template v-if="menu==0">
-            <h1>Inicio</h1>
+            <main class="main">
+                <div class="container-fluid">
+                    <h1>Inicio</h1>
+                </div>
+            </main>
         </template>
 
         <template v-if="menu==1">
@@ -17,39 +21,75 @@
         </template>
 
         <template v-if="menu==4">
-            <h1>Contenido del menú 4</h1>
+            <main class="main">
+                <div class="container-fluid">
+                    <empresa></empresa>
+                </div>
+            </main>
         </template>
 
         <template v-if="menu==5">
-            <h1>Contenido del menú 5</h1>
+            <main class="main">
+                <div class="container-fluid">
+                    <h1>Inicio 5</h1>
+                </div>
+            </main>
         </template>
 
         <template v-if="menu==6">
-            <h1>Contenido del menú 6</h1>
+        <   main class="main">
+                <div class="container-fluid">
+                    <h1>Inicio 6</h1>
+                </div>
+            </main>
         </template>
 
         <template v-if="menu==7">
-            <h1>Contenido del menú 7</h1>
+            <main class="main">
+                <div class="container-fluid">
+                    <h1>Inicio 7</h1>
+                </div>
+            </main>
         </template>
 
         <template v-if="menu==8">
-            <h1>Contenido del menú 8</h1>
+            <main class="main">
+                <div class="container-fluid">
+                    <h1>Inicio 8</h1>
+                </div>
+            </main>
         </template>
 
         <template v-if="menu==9">
-            <h1>Contenido del menú 9</h1>
+            <main class="main">
+                <div class="container-fluid">
+                    <h1>Inicio 9</h1>
+                </div>
+            </main>
         </template>
 
         <template v-if="menu==10">
-            <h1>Contenido del menú 10</h1>
+            <main class="main">
+                <div class="container-fluid">
+                    <h1>Inicio 10</h1>
+                </div>
+            </main>
         </template>
 
         <template v-if="menu==11">
-            <h1>Contenido del menú 11</h1>
+            <main class="main">
+                <div class="container-fluid">
+                    <h1>Inicio 11</h1>
+                </div>
+            </main>
         </template>
 
         <template v-if="menu==12">
-            <h1>Contenido del menú 12</h1>
+            <main class="main">
+                <div class="container-fluid">
+                    <h1>Inicio 12</h1>
+                </div>
+            </main>
         </template>
         
     @endsection

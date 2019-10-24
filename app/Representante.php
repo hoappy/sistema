@@ -11,4 +11,7 @@ class Representante extends Model
     protected $fillable=[
         'rut', 'dv', 'nombre', 'apellido1', 'apellido2', 'estado'
     ];
+    public function empresaRepresentante(){
+        return $this->hasMany('App\Empresa');
+    }
 }
