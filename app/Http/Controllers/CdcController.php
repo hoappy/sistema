@@ -21,10 +21,10 @@ class CdcController extends Controller
         $criterio = $request->criterio;
         
         if ($buscar==''){
-            $cdcs = Cdc::orderBy('id_cdc', 'desc')->paginate(10);
+            $cdcs = Cdc::orderBy('estado', 'desc')->paginate(15);
         }
         else{
-            $cdcs = Cdc::where($criterio, 'like', '%'. $buscar . '%')->orderBy('id_cdc', 'desc')->paginate(15);
+            $cdcs = Cdc::where($criterio, 'like', '%'. $buscar . '%')->orderBy('estado', 'desc')->paginate(15);
         }
         
 

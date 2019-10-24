@@ -17,10 +17,10 @@ class MutualController extends Controller
         $criterio = $request->criterio;
         
         if ($buscar==''){
-            $mutuals = Mutual::orderBy('id_mutual', 'desc')->paginate(10);
+            $mutuals = Mutual::orderBy('estado', 'desc')->paginate(15);
         }
         else{
-            $mutuals = Mutual::where($criterio, 'like', '%'. $buscar . '%')->orderBy('id_mutual', 'desc')->paginate(15);
+            $mutuals = Mutual::where($criterio, 'like', '%'. $buscar . '%')->orderBy('estado', 'desc')->paginate(15);
         }
         
 

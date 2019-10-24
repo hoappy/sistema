@@ -21,11 +21,7 @@
         </template>
 
         <template v-if="menu==4">
-            <main class="main">
-                <div class="container-fluid">
-                    <empresa></empresa>
-                </div>
-            </main>
+            <empresa></empresa>
         </template>
 
         <template v-if="menu==5">

@@ -17,10 +17,10 @@ class RepresentanteController extends Controller
         $criterio = $request->criterio;
         
         if ($buscar==''){
-            $representantes = Representante::orderBy('id_representante', 'desc')->paginate(10);
+            $representantes = Representante::orderBy('estado', 'desc')->paginate(15);
         }
         else{
-            $representantes = Representante::where($criterio, 'like', '%'. $buscar . '%')->orderBy('id_representante', 'desc')->paginate(15);
+            $representantes = Representante::where($criterio, 'like', '%'. $buscar . '%')->orderBy('estado', 'desc')->paginate(15);
         }
         
 
