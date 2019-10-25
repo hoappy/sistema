@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAfpTable extends Migration
+class CreateSaludTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateAfpTable extends Migration
      */
     public function up()
     {
-        Schema::create('afp', function (Blueprint $table) {
-            $table->increments('id_afp');
+        Schema::create('salud', function (Blueprint $table) {
+            $table->increments('id_salud');
             $table->string('nombre');
             $table->string('descripcion');
-            $table->integer('valor');
+            $table->boolean('provision');
             $table->boolean('estado')->default(1);
             $table->timestamps();
         });
@@ -30,6 +30,6 @@ class CreateAfpTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('afp');
+        Schema::dropIfExists('salud');
     }
 }

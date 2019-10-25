@@ -20,6 +20,7 @@ Vue.component('mutual', require('./components/Mutual.vue'));
 Vue.component('representante', require('./components/Representante.vue'));
 Vue.component('empresa', require('./components/Empresa.vue'));
 Vue.component('afp', require('./components/Afp.vue'));
+Vue.component('salud', require('./components/Salud.vue'));
 
 const app = new Vue({
     el: '#app',

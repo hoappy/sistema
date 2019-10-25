@@ -47,3 +47,9 @@ Route::post('/afp/registrar', 'afpController@store');
 Route::put('/afp/actualizar', 'afpController@update');
 Route::put('/afp/desactivar', 'afpController@desactivar');
 Route::put('/afp/activar', 'afpController@activar');
+
+Route::get('/salud', 'saludController@index');
+Route::post('/salud/registrar', 'saludController@store');
+Route::put('/salud/actualizar', 'saludController@update');
+Route::put('/salud/desactivar', 'saludController@desactivar');
+Route::put('/salud/activar', 'saludController@activar');

@@ -11,7 +11,5 @@ class Afp extends Model
     protected $fillable=[
         'nombre', 'descripcion', 'valor', 'estado'
     ];
-    public function empresaCdc(){
-        return $this->hasOne('App\Empresa');
-    }
+    
 }

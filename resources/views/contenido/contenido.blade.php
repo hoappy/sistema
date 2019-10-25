@@ -45,11 +45,7 @@
         </template>
 
         <template v-if="menu==8">
-            <main class="main">
-                <div class="container-fluid">
-                    <h1>Inicio 8</h1>
-                </div>
-            </main>
+            <salud></salud>
         </template>
 
         <template v-if="menu==9">
