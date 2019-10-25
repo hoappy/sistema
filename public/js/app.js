@@ -36599,6 +36599,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -37011,16 +37015,32 @@ var render = function() {
                   [
                     _c("option", { attrs: { value: "rut" } }, [_vm._v("RUT")]),
                     _vm._v(" "),
-                    _c("option", { attrs: { value: "nombre" } }, [
+                    _c("option", { attrs: { value: "razonSocial" } }, [
                       _vm._v("Razon Social")
                     ]),
                     _vm._v(" "),
-                    _c("option", { attrs: { value: "apellido1" } }, [
-                      _vm._v("Apellido Paterno")
+                    _c("option", { attrs: { value: "giro" } }, [
+                      _vm._v("giro")
                     ]),
                     _vm._v(" "),
-                    _c("option", { attrs: { value: "apellido2" } }, [
-                      _vm._v("Apellido Materno")
+                    _c("option", { attrs: { value: "representante" } }, [
+                      _vm._v("Representannte")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "direccion" } }, [
+                      _vm._v("Direccion")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "region" } }, [
+                      _vm._v("Region")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "comuna" } }, [
+                      _vm._v("Comuna")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "ciudad" } }, [
+                      _vm._v("Ciudad")
                     ])
                   ]
                 ),

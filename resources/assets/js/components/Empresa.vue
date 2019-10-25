@@ -21,9 +21,13 @@
                                 <div class="input-group">
                                     <select class="form-control col-md-3" v-model="criterio">
                                       <option value="rut">RUT</option>
-                                      <option value="nombre">Razon Social</option>
-                                      <option value="apellido1">Apellido Paterno</option>
-                                      <option value="apellido2">Apellido Materno</option>
+                                      <option value="razonSocial">Razon Social</option>
+                                      <option value="giro">giro</option>
+                                      <option value="representante">Representannte</option>
+                                      <option value="direccion">Direccion</option>
+                                      <option value="region">Region</option>
+                                      <option value="comuna">Comuna</option>
+                                      <option value="ciudad">Ciudad</option>
                                     </select>
                                     <input type="text" v-model="buscar" @keyup.enter="listarEmpresa(1,buscar,criterio)" class="form-control" placeholder="Texto a buscar">
                                     <button type="submit" @click="listarEmpresa(1,buscar,criterio)" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
