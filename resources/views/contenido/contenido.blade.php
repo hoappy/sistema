@@ -9,7 +9,7 @@
         </template>
 
         <template v-if="menu==1">
-            <cdc><\cdc>
+            <cdc></cdc>
         </template>
 
         <template v-if="menu==2">
@@ -33,7 +33,7 @@
         </template>
 
         <template v-if="menu==6">
-        <   main class="main">
+            <main class="main">
                 <div class="container-fluid">
                     <h1>Inicio 6</h1>
                 </div>
@@ -41,11 +41,7 @@
         </template>
 
         <template v-if="menu==7">
-            <main class="main">
-                <div class="container-fluid">
-                    <h1>Inicio 7</h1>
-                </div>
-            </main>
+            <afp></afp>
         </template>
 
         <template v-if="menu==8">
@@ -84,6 +80,46 @@
             <main class="main">
                 <div class="container-fluid">
                     <h1>Inicio 12</h1>
+                </div>
+            </main>
+        </template>
+
+        <template v-if="menu==13">
+            <main class="main">
+                <div class="container-fluid">
+                    <h1>Inicio 13</h1>
+                </div>
+            </main>
+        </template>
+
+        <template v-if="menu==14">
+            <main class="main">
+                <div class="container-fluid">
+                    <h1>Inicio 14</h1>
+                </div>
+            </main>
+        </template>
+
+        <template v-if="menu==15">
+            <main class="main">
+                <div class="container-fluid">
+                    <h1>Inicio 15</h1>
+                </div>
+            </main>
+        </template>
+
+        <template v-if="menu==16">
+            <main class="main">
+                <div class="container-fluid">
+                    <h1>Inicio 16</h1>
+                </div>
+            </main>
+        </template>
+
+        <template v-if="menu==17">
+            <main class="main">
+                <div class="container-fluid">
+                    <h1>Inicio 17</h1>
                 </div>
             </main>
         </template>

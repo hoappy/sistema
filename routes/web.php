@@ -41,3 +41,9 @@ Route::post('/empresa/registrar', 'empresaController@store');
 Route::put('/empresa/actualizar', 'empresaController@update');
 Route::put('/empresa/desactivar', 'empresaController@desactivar');
 Route::put('/empresa/activar', 'empresaController@activar');
+
+Route::get('/afp', 'afpController@index');
+Route::post('/afp/registrar', 'afpController@store');
+Route::put('/afp/actualizar', 'afpController@update');
+Route::put('/afp/desactivar', 'afpController@desactivar');
+Route::put('/afp/activar', 'afpController@activar');
