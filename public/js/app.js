@@ -39409,6 +39409,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -39793,14 +39797,14 @@ var render = function() {
                     _c("td", [
                       salud.provision
                         ? _c("div", [
-                            _c("span", { staticClass: "badge badge-success" }, [
-                              _vm._v("Fonasa")
-                            ])
+                            _vm._v(
+                              "\n                                    Fonasa\n                                "
+                            )
                           ])
                         : _c("div", [
-                            _c("span", { staticClass: "badge badge-danger" }, [
-                              _vm._v("Isapre")
-                            ])
+                            _vm._v(
+                              "\n                                    Isapre\n                                "
+                            )
                           ])
                     ]),
                     _vm._v(" "),
@@ -40103,30 +40107,50 @@ var render = function() {
                       ),
                       _vm._v(" "),
                       _c("div", { staticClass: "col-md-9" }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.provision,
-                              expression: "provision"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "provision",
-                            placeholder: "Ingrese provision"
-                          },
-                          domProps: { value: _vm.provision },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.provision,
+                                expression: "provision"
                               }
-                              _vm.provision = $event.target.value
+                            ],
+                            staticClass: "form-control",
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.provision = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              }
                             }
-                          }
-                        })
+                          },
+                          [
+                            _c(
+                              "option",
+                              { attrs: { value: "", disabled: "" } },
+                              [_vm._v("Seleccione")]
+                            ),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "0" } }, [
+                              _vm._v("Isapre")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "1" } }, [
+                              _vm._v("Fonasa")
+                            ])
+                          ]
+                        )
                       ])
                     ]),
                     _vm._v(" "),

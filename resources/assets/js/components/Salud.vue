@@ -45,10 +45,10 @@
                                     <td v-text="salud.descripcion"></td>
                                     <td>
                                         <div v-if="salud.provision">
-                                            <span class="badge badge-success">Fonasa</span>
+                                            Fonasa
                                         </div>
                                         <div v-else>
-                                            <span class="badge badge-danger">Isapre</span>
+                                            Isapre
                                         </div>
                                         
                                     </td>
@@ -124,7 +124,11 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="num-input">Provision</label>
                                     <div class="col-md-9">
-                                        <input type="provision" v-model="provision" class="form-control" placeholder="Ingrese provision">
+                                        <select class="form-control" v-model="provision">
+                                            <option value="" disabled>Seleccione</option>
+                                            <option value="0">Isapre</option>
+                                            <option value="1">Fonasa</option>
+                                        </select> 
                                     </div>
                                 </div>
                                 <div v-show="errorSalud" class="form-group row div-error">
