@@ -67,7 +67,7 @@ class EmpleadoController extends Controller
         $empleado->sexo = $request->sexo;
         $empleado->diasVacas = $request->diasVacas;
         $empleado->direccion = $request->direccion;
-        $empleado->seguriCesantia = $request->seguriCesantia;
+        $empleado->seguroCesantia = $request->seguroCesantia;
         $empleado->descuentosSalud = $request->descuentosSalud;
         $empleado->estaoCivil = $request->estaoCivil;
         $empleado->jornada = $request->jornada;
@@ -100,7 +100,7 @@ class EmpleadoController extends Controller
         $empleado->sexo = $request->sexo;
         $empleado->diasVacas = $request->diasVacas;
         $empleado->direccion = $request->direccion;
-        $empleado->seguriCesantia = $request->seguriCesantia;
+        $empleado->seguroCesantia = $request->seguroCesantia;
         $empleado->descuentosSalud = $request->descuentosSalud;
         $empleado->estaoCivil = $request->estaoCivil;
         $empleado->jornada = $request->jornada;

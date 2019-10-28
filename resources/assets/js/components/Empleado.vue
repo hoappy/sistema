@@ -83,7 +83,7 @@
                                         </div>
                                     </td>
                                     <td v-text="empleado.direccion"></td>
-                                    <td v-text="empleado.seguriCesantia"></td>
+                                    <td v-text="empleado.seguroCesantia"></td>
                                     <td v-text="empleado.descuentosSalud"></td>
                                     <td v-text="empleado.estaoCivil"></td>
                                     <td v-text="empleado.jornada"></td>
@@ -204,9 +204,9 @@
                                     <label class="col-md-3 form-control-label" for="num-input">Sexo</label>
                                     <div class="col-md-9">
                                         <select class="form-control" v-model="sexo">
-                                            <option value="2" disabled>Seleccione</option>
-                                            <option value="0">Hombre</option>
-                                            <option value="1">Mujer</option>
+                                            <option value="" disabled>Seleccione</option>
+                                            <option value="1">Hombre</option>
+                                            <option value="0">Mujer</option>
                                         </select> 
                                     </div>
                                 </div>
@@ -225,7 +225,7 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="text-input">Seguro de Cesantia</label>
                                     <div class="col-md-9">
-                                        <input type="number" v-model="seguriCesantia" class="form-control" placeholder="Ingrese Seguro de Cesantia del Empleado">
+                                        <input type="number" v-model="seguroCesantia" class="form-control" placeholder="Ingrese Seguro de Cesantia del Empleado">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -238,7 +238,7 @@
                                     <label class="col-md-3 form-control-label" for="text-input">Estado Civil</label>
                                     <div class="col-md-9">
                                         <select class="form-control" v-model="estaoCivil">
-                                            <option value=" " disabled>Seleccione</option>
+                                            <option value="" disabled>Seleccione</option>
                                             <option value="Casado">Casado</option>
                                             <option value="Separado(a) judicialmente">Separado(a) judicialmente</option>
                                             <option value="Divorciado(a)">Divorciado(a)</option>
@@ -251,7 +251,7 @@
                                     <label class="col-md-3 form-control-label" for="text-input">Jornada</label>
                                     <div class="col-md-9">
                                         <select class="form-control" v-model="jornada">
-                                            <option value=" " disabled>Seleccione</option>
+                                            <option value="" disabled>Seleccione</option>
                                             <option value="Completa">Completa</option>
                                             <option value="Mañana">Mañana</option>
                                             <option value="Tarde">Tarde</option>
@@ -265,7 +265,7 @@
                                     <label class="col-md-3 form-control-label" for="text-input">Cargo</label>
                                     <div class="col-md-9">
                                         <select class="form-control" v-model="cargo">
-                                            <option value=" " disabled>Seleccione</option>
+                                            <option value="" disabled>Seleccione</option>
                                             <option value="Jefe">Jefe</option>
                                             <option value="Director">Director</option>
                                             <option value="Supervisor">Supervisor</option>
@@ -280,7 +280,7 @@
                                     <label class="col-md-3 form-control-label" for="text-input">tipo</label>
                                     <div class="col-md-9">
                                         <select class="form-control" v-model="tipo">
-                                            <option value=" " disabled>Seleccione</option>
+                                            <option value="" disabled>Seleccione</option>
                                             <option value="Pasivo">Pasivo</option>
                                             <option value="Activo">Activo</option>
                                         </select> 
@@ -316,11 +316,11 @@
                 apellido1 : '',
                 apellido2 : '',
                 fechaNnaci : '',
-                sexo : 0,
-                diasVacas : 0,
+                sexo : '',
+                diasVacas : '',
                 direccion : '',
-                seguriCesantia  : 0,
-                descuentosSalud : 0,
+                seguroCesantia  : '',
+                descuentosSalud : '',
                 estaoCivil : '',
                 jornada : '',
                 cargo : '',
@@ -436,7 +436,7 @@
                     'sexo': this.sexo,
                     'diasVacas': this.diasVacas,
                     'direccion': this.direccion,
-                    'seguriCesantia': this.seguriCesantia,
+                    'seguroCesantia': this.seguroCesantia,
                     'descuentosSalud': this.descuentosSalud,
                     'estaoCivil': this.estaoCivil,
                     'jornada': this.jornada,
@@ -468,7 +468,7 @@
                     'sexo': this.sexo,
                     'diasVacas': this.diasVacas,
                     'direccion': this.direccion,
-                    'seguriCesantia': this.seguriCesantia,
+                    'seguroCesantia': this.seguroCesantia,
                     'descuentosSalud': this.descuentosSalud,
                     'estaoCivil': this.estaoCivil,
                     'jornada': this.jornada,
@@ -567,18 +567,18 @@
                 this.errorMostrarMsjEmpleado =[];
 
                 if (!this.rut) this.errorMostrarMsjEmpleado.push("El RUT del Empleado no puede estar vacío.");
-                if (!this.dv) this.errorMostrarMsjEmpleado.push("El Digito  Verificador no puede estar vacío.");
+                //if (!this.dv) this.errorMostrarMsjEmpleado.push("El Digito  Verificador no puede estar vacío.");
                 if (!this.nombre) this.errorMostrarMsjEmpleado.push("El campo Nombre no puede estar vacío.");
                 if (!this.apellido1) this.errorMostrarMsjEmpleado.push("El campo Apellido Paterno no puede estar vacío.");
                 if (!this.apellido2) this.errorMostrarMsjEmpleado.push("El campo Apellido Materno no puede estar vacío.");
                 if (!this.id_salud) this.errorMostrarMsjEmpleado.push("Tiene que seleccionar la Provision para la Empleado.");
                 if (!this.id_afp) this.errorMostrarMsjEmpleado.push("Tiene que seleccionar la AFP del Empleado.");
                 if (!this.fechaNnaci) this.errorMostrarMsjEmpleado.push("El Fecha Nacimiento no puede estar vacío.");
-                if (!this.sexo) this.errorMostrarMsjEmpleado.push("El campo Sexo no puede estar vacío.");
-                if (!this.diasVacas) this.errorMostrarMsjEmpleado.push("El campo Dias Vacaciones no puede estar vacío.");
+                //if (!this.sexo) this.errorMostrarMsjEmpleado.push("El campo Sexo no puede estar vacío.");
+                //if (!this.diasVacas) this.errorMostrarMsjEmpleado.push("El campo Dias Vacaciones no puede estar vacío.");
                 if (!this.direccion) this.errorMostrarMsjEmpleado.push("El campo Direccion no puede estar vacío.");
-                if (!this.seguriCesantia) this.errorMostrarMsjEmpleado.push("El campo Seguro de Cesantia no puede estar vacío.");
-                if (!this.descuentosSalud) this.errorMostrarMsjEmpleado.push("El campo Descuento Salud no puede estar vacío.");
+                //if (!this.seguroCesantia) this.errorMostrarMsjEmpleado.push("El campo Seguro de Cesantia no puede estar vacío.");
+                //if (!this.descuentosSalud) this.errorMostrarMsjEmpleado.push("El campo Descuento Salud no puede estar vacío.");
                 if (!this.estaoCivil) this.errorMostrarMsjEmpleado.push("El campo Estado Civil no puede estar vacío.");
                 if (!this.jornada) this.errorMostrarMsjEmpleado.push("El campo Jornada no puede estar vacío.");
                 if (!this.cargo) this.errorMostrarMsjEmpleado.push("El campo Cargo no puede estar vacío.");
@@ -591,19 +591,19 @@
             cerrarModal(){
                 this.modal=0;
                 this.tituloModal='';
-                this.id_salud = 0;
-                this.id_afp = 0;
-                this.rut = 0;
+                this.id_salud = '';
+                this.id_afp = '';
+                this.rut ='';
                 this.dv = '';
                 this.nombre = '';
                 this.apellido1 = '';
                 this.apellido2 = '';
                 this.fechaNnaci = '';
-                this.sexo = 0;
-                this.diasVacas = 0;
+                this.sexo = '';
+                this.diasVacas = '';
                 this.direccion = '';
-                this.seguriCesantia  = 0;
-                this.descuentosSalud = 0;
+                this.seguroCesantia  = '';
+                this.descuentosSalud = '';
                 this.estaoCivil = '';
                 this.jornada = '';
                 this.cargo = '';
@@ -620,17 +620,17 @@
                                 this.tituloModal = 'Registrar Empleado';
                                 this.id_salud = 0;
                                 this.id_afp = 0;
-                                this.rut = 0;
-                                this.dv = '';
+                                this.rut = '12345678';
+                                this.dv = '9';
                                 this.nombre = '';
                                 this.apellido1 = '';
                                 this.apellido2 = '';
                                 this.fechaNnaci = '1989-01-01';
-                                this.sexo = 0;
-                                this.diasVacas = 0;
+                                this.sexo = '';
+                                this.diasVacas = '0';
                                 this.direccion = '';
-                                this.seguriCesantia  = 0;
-                                this.descuentosSalud = 0;
+                                this.seguroCesantia  = '0';
+                                this.descuentosSalud = '0';
                                 this.estaoCivil = '';
                                 this.jornada = '';
                                 this.cargo = '';
@@ -652,11 +652,11 @@
                                 this.nombre = data['nombre'];
                                 this.apellido1 = data['apellido1'];
                                 this.apellido2 = data['apellido2'];
-                                this.fechaNnaci = 'fechaNnaci';
+                                this.fechaNnaci = data['fechaNnaci'];
                                 this.sexo = data['sexo'];
                                 this.diasVacas = data['diasVacas'];
                                 this.direccion = data['direccion'];
-                                this.seguriCesantia  = data['seguriCesantia'];
+                                this.seguroCesantia  = data['seguroCesantia'];
                                 this.descuentosSalud = data['descuentosSalud'];
                                 this.estaoCivil = data['estaoCivil'];
                                 this.jornada = data['jornada'];

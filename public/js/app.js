@@ -40740,11 +40740,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             apellido1: '',
             apellido2: '',
             fechaNnaci: '',
-            sexo: 0,
-            diasVacas: 0,
+            sexo: '',
+            diasVacas: '',
             direccion: '',
-            seguriCesantia: 0,
-            descuentosSalud: 0,
+            seguroCesantia: '',
+            descuentosSalud: '',
             estaoCivil: '',
             jornada: '',
             cargo: '',
@@ -40857,7 +40857,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'sexo': this.sexo,
                 'diasVacas': this.diasVacas,
                 'direccion': this.direccion,
-                'seguriCesantia': this.seguriCesantia,
+                'seguroCesantia': this.seguroCesantia,
                 'descuentosSalud': this.descuentosSalud,
                 'estaoCivil': this.estaoCivil,
                 'jornada': this.jornada,
@@ -40889,7 +40889,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'sexo': this.sexo,
                 'diasVacas': this.diasVacas,
                 'direccion': this.direccion,
-                'seguriCesantia': this.seguriCesantia,
+                'seguroCesantia': this.seguroCesantia,
                 'descuentosSalud': this.descuentosSalud,
                 'estaoCivil': this.estaoCivil,
                 'jornada': this.jornada,
@@ -40974,18 +40974,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.errorMostrarMsjEmpleado = [];
 
             if (!this.rut) this.errorMostrarMsjEmpleado.push("El RUT del Empleado no puede estar vacío.");
-            if (!this.dv) this.errorMostrarMsjEmpleado.push("El Digito  Verificador no puede estar vacío.");
+            //if (!this.dv) this.errorMostrarMsjEmpleado.push("El Digito  Verificador no puede estar vacío.");
             if (!this.nombre) this.errorMostrarMsjEmpleado.push("El campo Nombre no puede estar vacío.");
             if (!this.apellido1) this.errorMostrarMsjEmpleado.push("El campo Apellido Paterno no puede estar vacío.");
             if (!this.apellido2) this.errorMostrarMsjEmpleado.push("El campo Apellido Materno no puede estar vacío.");
             if (!this.id_salud) this.errorMostrarMsjEmpleado.push("Tiene que seleccionar la Provision para la Empleado.");
             if (!this.id_afp) this.errorMostrarMsjEmpleado.push("Tiene que seleccionar la AFP del Empleado.");
             if (!this.fechaNnaci) this.errorMostrarMsjEmpleado.push("El Fecha Nacimiento no puede estar vacío.");
-            if (!this.sexo) this.errorMostrarMsjEmpleado.push("El campo Sexo no puede estar vacío.");
-            if (!this.diasVacas) this.errorMostrarMsjEmpleado.push("El campo Dias Vacaciones no puede estar vacío.");
+            //if (!this.sexo) this.errorMostrarMsjEmpleado.push("El campo Sexo no puede estar vacío.");
+            //if (!this.diasVacas) this.errorMostrarMsjEmpleado.push("El campo Dias Vacaciones no puede estar vacío.");
             if (!this.direccion) this.errorMostrarMsjEmpleado.push("El campo Direccion no puede estar vacío.");
-            if (!this.seguriCesantia) this.errorMostrarMsjEmpleado.push("El campo Seguro de Cesantia no puede estar vacío.");
-            if (!this.descuentosSalud) this.errorMostrarMsjEmpleado.push("El campo Descuento Salud no puede estar vacío.");
+            //if (!this.seguroCesantia) this.errorMostrarMsjEmpleado.push("El campo Seguro de Cesantia no puede estar vacío.");
+            //if (!this.descuentosSalud) this.errorMostrarMsjEmpleado.push("El campo Descuento Salud no puede estar vacío.");
             if (!this.estaoCivil) this.errorMostrarMsjEmpleado.push("El campo Estado Civil no puede estar vacío.");
             if (!this.jornada) this.errorMostrarMsjEmpleado.push("El campo Jornada no puede estar vacío.");
             if (!this.cargo) this.errorMostrarMsjEmpleado.push("El campo Cargo no puede estar vacío.");
@@ -40998,19 +40998,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         cerrarModal: function cerrarModal() {
             this.modal = 0;
             this.tituloModal = '';
-            this.id_salud = 0;
-            this.id_afp = 0;
-            this.rut = 0;
+            this.id_salud = '';
+            this.id_afp = '';
+            this.rut = '';
             this.dv = '';
             this.nombre = '';
             this.apellido1 = '';
             this.apellido2 = '';
             this.fechaNnaci = '';
-            this.sexo = 0;
-            this.diasVacas = 0;
+            this.sexo = '';
+            this.diasVacas = '';
             this.direccion = '';
-            this.seguriCesantia = 0;
-            this.descuentosSalud = 0;
+            this.seguroCesantia = '';
+            this.descuentosSalud = '';
             this.estaoCivil = '';
             this.jornada = '';
             this.cargo = '';
@@ -41029,17 +41029,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                     this.tituloModal = 'Registrar Empleado';
                                     this.id_salud = 0;
                                     this.id_afp = 0;
-                                    this.rut = 0;
-                                    this.dv = '';
+                                    this.rut = '12345678';
+                                    this.dv = '9';
                                     this.nombre = '';
                                     this.apellido1 = '';
                                     this.apellido2 = '';
                                     this.fechaNnaci = '1989-01-01';
-                                    this.sexo = 0;
-                                    this.diasVacas = 0;
+                                    this.sexo = '';
+                                    this.diasVacas = '0';
                                     this.direccion = '';
-                                    this.seguriCesantia = 0;
-                                    this.descuentosSalud = 0;
+                                    this.seguroCesantia = '0';
+                                    this.descuentosSalud = '0';
                                     this.estaoCivil = '';
                                     this.jornada = '';
                                     this.cargo = '';
@@ -41061,11 +41061,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                     this.nombre = data['nombre'];
                                     this.apellido1 = data['apellido1'];
                                     this.apellido2 = data['apellido2'];
-                                    this.fechaNnaci = 'fechaNnaci';
+                                    this.fechaNnaci = data['fechaNnaci'];
                                     this.sexo = data['sexo'];
                                     this.diasVacas = data['diasVacas'];
                                     this.direccion = data['direccion'];
-                                    this.seguriCesantia = data['seguriCesantia'];
+                                    this.seguroCesantia = data['seguroCesantia'];
                                     this.descuentosSalud = data['descuentosSalud'];
                                     this.estaoCivil = data['estaoCivil'];
                                     this.jornada = data['jornada'];
@@ -41309,7 +41309,7 @@ var render = function() {
                     }),
                     _vm._v(" "),
                     _c("td", {
-                      domProps: { textContent: _vm._s(empleado.seguriCesantia) }
+                      domProps: { textContent: _vm._s(empleado.seguroCesantia) }
                     }),
                     _vm._v(" "),
                     _c("td", {
@@ -41949,15 +41949,15 @@ var render = function() {
                           [
                             _c(
                               "option",
-                              { attrs: { value: "2", disabled: "" } },
+                              { attrs: { value: "", disabled: "" } },
                               [_vm._v("Seleccione")]
                             ),
                             _vm._v(" "),
-                            _c("option", { attrs: { value: "0" } }, [
+                            _c("option", { attrs: { value: "1" } }, [
                               _vm._v("Hombre")
                             ]),
                             _vm._v(" "),
-                            _c("option", { attrs: { value: "1" } }, [
+                            _c("option", { attrs: { value: "0" } }, [
                               _vm._v("Mujer")
                             ])
                           ]
@@ -42058,8 +42058,8 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.seguriCesantia,
-                              expression: "seguriCesantia"
+                              value: _vm.seguroCesantia,
+                              expression: "seguroCesantia"
                             }
                           ],
                           staticClass: "form-control",
@@ -42068,13 +42068,13 @@ var render = function() {
                             placeholder:
                               "Ingrese Seguro de Cesantia del Empleado"
                           },
-                          domProps: { value: _vm.seguriCesantia },
+                          domProps: { value: _vm.seguroCesantia },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
                                 return
                               }
-                              _vm.seguriCesantia = $event.target.value
+                              _vm.seguroCesantia = $event.target.value
                             }
                           }
                         })
@@ -42162,7 +42162,7 @@ var render = function() {
                           [
                             _c(
                               "option",
-                              { attrs: { value: " ", disabled: "" } },
+                              { attrs: { value: "", disabled: "" } },
                               [_vm._v("Seleccione")]
                             ),
                             _vm._v(" "),
@@ -42238,7 +42238,7 @@ var render = function() {
                           [
                             _c(
                               "option",
-                              { attrs: { value: " ", disabled: "" } },
+                              { attrs: { value: "", disabled: "" } },
                               [_vm._v("Seleccione")]
                             ),
                             _vm._v(" "),
@@ -42316,7 +42316,7 @@ var render = function() {
                           [
                             _c(
                               "option",
-                              { attrs: { value: " ", disabled: "" } },
+                              { attrs: { value: "", disabled: "" } },
                               [_vm._v("Seleccione")]
                             ),
                             _vm._v(" "),
@@ -42390,7 +42390,7 @@ var render = function() {
                           [
                             _c(
                               "option",
-                              { attrs: { value: " ", disabled: "" } },
+                              { attrs: { value: "", disabled: "" } },
                               [_vm._v("Seleccione")]
                             ),
                             _vm._v(" "),
