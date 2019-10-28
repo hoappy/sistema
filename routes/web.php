@@ -53,3 +53,9 @@ Route::post('/salud/registrar', 'saludController@store');
 Route::put('/salud/actualizar', 'saludController@update');
 Route::put('/salud/desactivar', 'saludController@desactivar');
 Route::put('/salud/activar', 'saludController@activar');
+
+Route::get('/empleado', 'empleadoController@index');
+Route::post('/empleado/registrar', 'empleadoController@store');
+Route::put('/empleado/actualizar', 'empleadoController@update');
+Route::put('/empleado/desactivar', 'empleadoController@desactivar');
+Route::put('/empleado/activar', 'empleadoController@activar');

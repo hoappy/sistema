@@ -11,5 +11,7 @@ class Afp extends Model
     protected $fillable=[
         'nombre', 'descripcion', 'valor', 'estado'
     ];
-    
+    public function empleadoAfp(){
+        return $this->hasOne('App\Empleado');
+    }
 }

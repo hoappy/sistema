@@ -57,7 +57,7 @@
                                         
                                     </td>
                                     <td>
-                                        <button type="button" @click="abrirModal('representante','actualizar',representante)" class="btn btn-warning btn-sm">
+                                        <button type="button" @click="abrirModal('representante','actualizar',representante)" class="btn btn-primary btn-sm">
                                           <i class="icon-pencil"></i>
                                         </button> &nbsp;
                                         <template v-if="representante.estado">

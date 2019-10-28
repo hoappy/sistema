@@ -54,7 +54,7 @@
                                         
                                     </td>
                                     <td>
-                                        <button type="button" @click="abrirModal('afp','actualizar',afp)" class="btn btn-warning btn-sm">
+                                        <button type="button" @click="abrirModal('afp','actualizar',afp)" class="btn btn-primary btn-sm">
                                           <i class="icon-pencil"></i>
                                         </button> &nbsp;
                                         <template v-if="afp.estado">

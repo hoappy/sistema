@@ -21,6 +21,7 @@ Vue.component('representante', require('./components/Representante.vue'));
 Vue.component('empresa', require('./components/Empresa.vue'));
 Vue.component('afp', require('./components/Afp.vue'));
 Vue.component('salud', require('./components/Salud.vue'));
+Vue.component('empleado', require('./components/Empleado.vue'));
 
 
 const app = new Vue({

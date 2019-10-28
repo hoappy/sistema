@@ -56,6 +56,7 @@ class SaludController extends Controller
         $salud->nombre = $request->nombre;
         $salud->descripcion = $request->descripcion;
         $salud->provision = $request->provision;
+        $salud->valor = $request->valor;
         $salud->estado = '1';
         $salud->save();
     }
@@ -75,6 +76,7 @@ class SaludController extends Controller
         $salud->nombre = $request->nombre;
         $salud->descripcion = $request->descripcion;
         $salud->provision = $request->provision;
+        $salud->valor = $request->valor;
         $salud->estado = '1';
         $salud->save();
     }

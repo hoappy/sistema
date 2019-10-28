@@ -51,7 +51,7 @@
                                         
                                     </td>
                                     <td>
-                                        <button type="button" @click="abrirModal('mutual','actualizar',mutual)" class="btn btn-warning btn-sm">
+                                        <button type="button" @click="abrirModal('mutual','actualizar',mutual)" class="btn btn-primary btn-sm">
                                           <i class="icon-pencil"></i>
                                         </button> &nbsp;
                                         <template v-if="mutual.estado">

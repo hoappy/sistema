@@ -10,8 +10,8 @@
                 <!-- Ejemplo de tabla Listado -->
                 <div class="card">
                     <div class="card-header">
-                        <i class="fa fa-align-justify"></i> Empresa
-                        <button type="button" @click="abrirModal('empresa','registrar')" class="btn btn-secondary">
+                        <i class="fa fa-align-justify"></i> Empleado
+                        <button type="button" @click="abrirModal('empleado','registrar')" class="btn btn-secondary">
                             <i class="icon-plus"></i>&nbsp;Nuevo
                         </button>
                     </div>
@@ -29,8 +29,8 @@
                                       <option value="comuna">Comuna</option>
                                       <option value="ciudad">Ciudad</option>
                                     </select>
-                                    <input type="text" v-model="buscar" @keyup.enter="listarEmpresa(1,buscar,criterio)" class="form-control" placeholder="Texto a buscar">
-                                    <button type="submit" @click="listarEmpresa(1,buscar,criterio)" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
+                                    <input type="text" v-model="buscar" @keyup.enter="listarEmpleado(1,buscar,criterio)" class="form-control" placeholder="Texto a buscar">
+                                    <button type="submit" @click="listarEmpleado(1,buscar,criterio)" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
                                 </div>
                             </div>
                         </div>
@@ -54,21 +54,21 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="empresa in arrayEmpresa" :key="empresa.id_empresa">
-                                    <td v-text="empresa.rut + '-' + empresa.dv"></td>
-                                    <td v-text="empresa.razonSocial"></td>
-                                    <td v-text="empresa.giro"></td>
-                                    <td v-text="empresa.representanteNombre + ' ' + empresa.representanteAp1 + ' ' + empresa.representanteAp2"></td>
-                                    <td v-text="empresa.mutual"></td>
-                                    <td v-text="empresa.cdc"></td>
-                                    <td v-text="empresa.correo"></td>
-                                    <td v-text="empresa.telefono"></td>
-                                    <td v-text="empresa.direccion"></td>
-                                    <td v-text="empresa.region"></td>
-                                    <td v-text="empresa.comuna"></td>
-                                    <td v-text="empresa.ciudad"></td>
+                                <tr v-for="empleado in arrayEmpleado" :key="empleado.id_empleado">
+                                    <td v-text="empleado.rut + '-' + empleado.dv"></td>
+                                    <td v-text="empleado.razonSocial"></td>
+                                    <td v-text="empleado.giro"></td>
+                                    <td v-text="empleado.representanteNombre + ' ' + empleado.representanteAp1 + ' ' + empleado.representanteAp2"></td>
+                                    <td v-text="empleado.mutual"></td>
+                                    <td v-text="empleado.cdc"></td>
+                                    <td v-text="empleado.correo"></td>
+                                    <td v-text="empleado.telefono"></td>
+                                    <td v-text="empleado.direccion"></td>
+                                    <td v-text="empleado.region"></td>
+                                    <td v-text="empleado.comuna"></td>
+                                    <td v-text="empleado.ciudad"></td>
                                     <td>
-                                        <div v-if="empresa.estado">
+                                        <div v-if="empleado.estado">
                                             <span class="badge badge-success">Activo</span>
                                         </div>
                                         <div v-else>
@@ -77,16 +77,16 @@
                                         
                                     </td>
                                     <td>
-                                        <button type="button" @click="abrirModal('empresa','actualizar',empresa)" class="btn btn-primary btn-sm">
+                                        <button type="button" @click="abrirModal('empleado','actualizar',empleado)" class="btn btn-primary btn-sm">
                                           <i class="icon-pencil"></i>
                                         </button> &nbsp;
-                                        <template v-if="empresa.estado">
-                                            <button type="button" class="btn btn-danger btn-sm" @click="desactivarEmpresa(empresa.id_empresa)">
+                                        <template v-if="empleado.estado">
+                                            <button type="button" class="btn btn-danger btn-sm" @click="desactivarEmpleado(empleado.id_empleado)">
                                                 <i class="icon-trash"></i>
                                             </button>
                                         </template>
                                         <template v-else>
-                                            <button type="button" class="btn btn-info btn-sm" @click="activarEmpresa(empresa.id_empresa)">
+                                            <button type="button" class="btn btn-info btn-sm" @click="activarEmpleado(empleado.id_empleado)">
                                                 <i class="icon-check"></i>
                                             </button>
                                         </template>
@@ -126,7 +126,7 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="text-input">RUT</label>
                                     <div class="col-md-9">
-                                        <input type="number" v-model="rut" class="form-control" placeholder="Ingrese RUT del Empresa">
+                                        <input type="number" v-model="rut" class="form-control" placeholder="Ingrese RUT del Empleado">
                                     </div>
                                 </div>    
                                 <div class="form-group row">
@@ -138,13 +138,13 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="text-input">Razon Social</label>
                                     <div class="col-md-9">
-                                        <input type="text" v-model="razonSocial" class="form-control" placeholder="Ingrese Razon Social de la Empresa">
+                                        <input type="text" v-model="razonSocial" class="form-control" placeholder="Ingrese Razon Social de la Empleado">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="text-input">Giro</label>
                                     <div class="col-md-9">
-                                        <input type="text" v-model="giro" class="form-control" placeholder="Ingrese Giro de la Empresa">
+                                        <input type="text" v-model="giro" class="form-control" placeholder="Ingrese Giro de la Empleado">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -177,42 +177,42 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="text-input">Correo</label>
                                     <div class="col-md-9">
-                                        <input type="text" v-model="correo" class="form-control" placeholder="Ingrese el Correo de la Empresa">
+                                        <input type="text" v-model="correo" class="form-control" placeholder="Ingrese el Correo de la Empleado">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="text-input">telefono</label>
                                     <div class="col-md-9">
-                                        <input type="number" v-model="telefono" class="form-control" placeholder="Ingrese Telefono o cCelular de la Empresa">
+                                        <input type="number" v-model="telefono" class="form-control" placeholder="Ingrese Telefono o cCelular de la Empleado">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="text-input">Direccion</label>
                                     <div class="col-md-9">
-                                        <input type="text" v-model="direccion" class="form-control" placeholder="Ingrese la Direccion de la Empresa">
+                                        <input type="text" v-model="direccion" class="form-control" placeholder="Ingrese la Direccion de la Empleado">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="text-input">Region</label>
                                     <div class="col-md-9">
-                                        <input type="text" v-model="region" class="form-control" placeholder="Ingrese la Region de la Empresa">
+                                        <input type="text" v-model="region" class="form-control" placeholder="Ingrese la Region de la Empleado">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="text-input">Comuna</label>
                                     <div class="col-md-9">
-                                        <input type="text" v-model="comuna" class="form-control" placeholder="Ingrese la Comuna de la Empresa">
+                                        <input type="text" v-model="comuna" class="form-control" placeholder="Ingrese la Comuna de la Empleado">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="text-input">Ciudad</label>
                                     <div class="col-md-9">
-                                        <input type="text" v-model="ciudad" class="form-control" placeholder="Ingrese la Ciudad de la Empresa">
+                                        <input type="text" v-model="ciudad" class="form-control" placeholder="Ingrese la Ciudad de la Empleado">
                                     </div>
                                 </div>
-                                <div v-show="errorEmpresa" class="form-group row div-error">
+                                <div v-show="errorEmpleado" class="form-group row div-error">
                                     <div class="text-center text-error">
-                                        <div v-for="error in errorMostrarMsjEmpresa" :key="error" v-text="error">
+                                        <div v-for="error in errorMostrarMsjEmpleado" :key="error" v-text="error">
 
                                         </div>
                                     </div>
@@ -222,8 +222,8 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" @click="cerrarModal()">Cerrar</button>
-                            <button type="button" v-if="tipoAccion==1" class="btn btn-primary" @click="registrarEmpresa()">Guardar</button>
-                            <button type="button" v-if="tipoAccion==2" class="btn btn-primary" @click="actualizarEmpresa()">Actualizar</button>
+                            <button type="button" v-if="tipoAccion==1" class="btn btn-primary" @click="registrarEmpleado()">Guardar</button>
+                            <button type="button" v-if="tipoAccion==2" class="btn btn-primary" @click="actualizarEmpleado()">Actualizar</button>
                         </div>
                     </div>
                     <!-- /.modal-content -->
@@ -238,7 +238,7 @@
     export default {
         data (){
             return {
-                id_id_empresa: 0,
+                id_id_empleado: 0,
                 id_mutual : 0,
                 id_representante : 0,
                 id_cdc : 0,
@@ -252,12 +252,12 @@
                 ciudad : '',
                 comuna  : '',
                 region : '',
-                arrayEmpresa : [],
+                arrayEmpleado : [],
                 modal : 0,
                 tituloModal : '',
                 tipoAccion : 0,
-                errorEmpresa : 0,
-                errorMostrarMsjEmpresa : [],
+                errorEmpleado : 0,
+                errorMostrarMsjEmpleado : [],
                 pagination : {
                     'total' : 0,
                     'current_page' : 0,
@@ -304,18 +304,6 @@
             }
         },
         methods : {
-            selectRepresentante(){
-                let me=this;
-                var url= '/representante/selectRepresentante';
-                axios.get(url).then(function (response) {
-                    //console.log(response);
-                    var respuesta= response.data;
-                    me.arrayRepresentante = respuesta.representantes;
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-            },
             selectCdc(){
                 let me=this;
                 var url= '/cdc/selectCdc';
@@ -340,12 +328,12 @@
                     console.log(error);
                 });
             },
-            listarEmpresa (page,buscar,criterio){
+            listarEmpleado (page,buscar,criterio){
                 let me=this;
-                var url= '/empresa?page=' + page + '&buscar='+ buscar + '&criterio='+ criterio;
+                var url= '/empleado?page=' + page + '&buscar='+ buscar + '&criterio='+ criterio;
                 axios.get(url).then(function (response) {
                     var respuesta= response.data;
-                    me.arrayEmpresa = respuesta.empresas.data;
+                    me.arrayEmpleado = respuesta.empleados.data;
                     me.pagination= respuesta.pagination;
                 })
                 .catch(function (error) {
@@ -357,16 +345,16 @@
                 //Actualiza la página actual
                 me.pagination.current_page = page;
                 //Envia la petición para visualizar la data de esa página
-                me.listarEmpresa(page,buscar,criterio);
+                me.listarEmpleado(page,buscar,criterio);
             },
-            registrarEmpresa(){
-                if (this.validarEmpresa()){
+            registrarEmpleado(){
+                if (this.validarEmpleado()){
                     return;
                 }
                 
                 let me = this;
 
-                axios.post('/empresa/registrar',{
+                axios.post('/empleado/registrar',{
                     'rut': this.rut,
                     'dv': this.dv,
                     'razonSocial': this.razonSocial,
@@ -382,19 +370,19 @@
                     'ciudad': this.ciudad,
                 }).then(function (response) {
                     me.cerrarModal();
-                    me.listarEmpresa(1,'','nombre');
+                    me.listarEmpleado(1,'','nombre');
                 }).catch(function (error) {
                     console.log(error);
                 });
             },
-            actualizarEmpresa(){
-               if (this.validarEmpresa()){
+            actualizarEmpleado(){
+               if (this.validarEmpleado()){
                     return;
                 }
                 
                 let me = this;
 
-                axios.put('/empresa/actualizar',{
+                axios.put('/empleado/actualizar',{
                     'rut': this.rut,
                     'dv': this.dv,
                     'razonSocial': this.razonSocial,
@@ -408,17 +396,17 @@
                     'region': this.region,
                     'comuna': this.comuna,
                     'ciudad': this.ciudad,
-                    'id_empresa': this.id_id_empresa
+                    'id_empleado': this.id_id_empleado
                 }).then(function (response) {
                     me.cerrarModal();
-                    me.listarEmpresa(1,'','nombre');
+                    me.listarEmpleado(1,'','nombre');
                 }).catch(function (error) {
                     console.log(error);
                 }); 
             },
-            desactivarEmpresa(id_empresa){
+            desactivarEmpleado(id_empleado){
                swal({
-                title: 'Esta seguro de desactivar esta Empresa?',
+                title: 'Esta seguro de desactivar esta Empleado?',
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -433,10 +421,10 @@
                 if (result.value) {
                     let me = this;
 
-                    axios.put('/empresa/desactivar',{
-                        'id_empresa': id_empresa
+                    axios.put('/empleado/desactivar',{
+                        'id_empleado': id_empleado
                     }).then(function (response) {
-                        me.listarEmpresa(1,'','nombre');
+                        me.listarEmpleado(1,'','nombre');
                         swal(
                         'Desactivado!',
                         'El registro ha sido desactivado con éxito.',
@@ -455,9 +443,9 @@
                 }
                 }) 
             },
-            activarEmpresa(id_empresa){
+            activarEmpleado(id_empleado){
                swal({
-                title: 'Esta seguro de activar esta Empresa?',
+                title: 'Esta seguro de activar esta Empleado?',
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -472,10 +460,10 @@
                 if (result.value) {
                     let me = this;
 
-                    axios.put('/empresa/activar',{
-                        'id_empresa': id_empresa
+                    axios.put('/empleado/activar',{
+                        'id_empleado': id_empleado
                     }).then(function (response) {
-                        me.listarEmpresa(1,'','nombre');
+                        me.listarEmpleado(1,'','nombre');
                         swal(
                         'Activado!',
                         'El registro ha sido activado con éxito.',
@@ -494,27 +482,27 @@
                 }
                 }) 
             },
-            validarEmpresa(){
-                this.errorEmpresa=0;
-                this.errorMostrarMsjEmpresa =[];
+            validarEmpleado(){
+                this.errorEmpleado=0;
+                this.errorMostrarMsjEmpleado =[];
 
-                if (!this.rut) this.errorMostrarMsjEmpresa.push("El RUT del Empresa no puede estar vacío.");
-                if (!this.dv) this.errorMostrarMsjEmpresa.push("El Digito  Verificador no puede estar vacío.");
-                if (!this.razonSocial) this.errorMostrarMsjEmpresa.push("El campo Razon Social no puede estar vacío.");
-                if (!this.giro) this.errorMostrarMsjEmpresa.push("El campo Giro no puede estar vacío.");
-                if (!this.id_mutual) this.errorMostrarMsjEmpresa.push("Tiene que seleccionar un Representante para la Empresa.");
-                if (!this.id_mutual) this.errorMostrarMsjEmpresa.push("Tiene que seleccionar una Mutual para la Empresa.");
-                if (!this.id_cdc) this.errorMostrarMsjEmpresa.push("Tiene que seleccionar una Caja de Compensacion para la Empresa.");
-                if (!this.correo) this.errorMostrarMsjEmpresa.push("El campo Razon Social no puede estar vacío.");
-                if (!this.telefono) this.errorMostrarMsjEmpresa.push("El campo Telefono no puede estar vacío.");
-                if (!this.direccion) this.errorMostrarMsjEmpresa.push("El campo Direccion no puede estar vacío.");
-                if (!this.region) this.errorMostrarMsjEmpresa.push("El campo Region no puede estar vacío.");
-                if (!this.comuna) this.errorMostrarMsjEmpresa.push("El campo Comuna no puede estar vacío.");
-                if (!this.ciudad) this.errorMostrarMsjEmpresa.push("El campo Ciudad no puede estar vacío.");
+                if (!this.rut) this.errorMostrarMsjEmpleado.push("El RUT del Empleado no puede estar vacío.");
+                if (!this.dv) this.errorMostrarMsjEmpleado.push("El Digito  Verificador no puede estar vacío.");
+                if (!this.razonSocial) this.errorMostrarMsjEmpleado.push("El campo Razon Social no puede estar vacío.");
+                if (!this.giro) this.errorMostrarMsjEmpleado.push("El campo Giro no puede estar vacío.");
+                if (!this.id_mutual) this.errorMostrarMsjEmpleado.push("Tiene que seleccionar un Representante para la Empleado.");
+                if (!this.id_mutual) this.errorMostrarMsjEmpleado.push("Tiene que seleccionar una Mutual para la Empleado.");
+                if (!this.id_cdc) this.errorMostrarMsjEmpleado.push("Tiene que seleccionar una Caja de Compensacion para la Empleado.");
+                if (!this.correo) this.errorMostrarMsjEmpleado.push("El campo Razon Social no puede estar vacío.");
+                if (!this.telefono) this.errorMostrarMsjEmpleado.push("El campo Telefono no puede estar vacío.");
+                if (!this.direccion) this.errorMostrarMsjEmpleado.push("El campo Direccion no puede estar vacío.");
+                if (!this.region) this.errorMostrarMsjEmpleado.push("El campo Region no puede estar vacío.");
+                if (!this.comuna) this.errorMostrarMsjEmpleado.push("El campo Comuna no puede estar vacío.");
+                if (!this.ciudad) this.errorMostrarMsjEmpleado.push("El campo Ciudad no puede estar vacío.");
 
-                if (this.errorMostrarMsjEmpresa.length) this.errorEmpresa = 1;
+                if (this.errorMostrarMsjEmpleado.length) this.errorEmpleado = 1;
 
-                return this.errorEmpresa;
+                return this.errorEmpleado;
             },
             cerrarModal(){
                 this.modal=0;
@@ -535,13 +523,13 @@
             },
             abrirModal(modelo, accion, data = []){
                 switch(modelo){
-                    case "empresa":
+                    case "empleado":
                     {
                         switch(accion){
                             case 'registrar':
                             {
                                 this.modal = 1;
-                                this.tituloModal = 'Registrar Empresa';
+                                this.tituloModal = 'Registrar Empleado';
                                 this.rut= 0;
                                 this.dv= '';
                                 this.razonSocial= '';
@@ -562,9 +550,9 @@
                             {
                                 //console.log(data);
                                 this.modal=1;
-                                this.tituloModal = 'Actualizar Empresa';
+                                this.tituloModal = 'Actualizar Empleado';
                                 this.tipoAccion = 2;
-                                this.id_id_empresa = data['id_empresa'];
+                                this.id_id_empleado = data['id_empleado'];
                                 this.rut = data['rut'];
                                 this.dv = data['dv'];
                                 this.razonSocial = data['razonSocial'];
@@ -589,7 +577,7 @@
             }
         },
         mounted() {
-            this.listarEmpresa(1,this.buscar,this.criterio);
+            this.listarEmpleado(1,this.buscar,this.criterio);
         }
     }
 </script>

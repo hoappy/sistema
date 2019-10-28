@@ -54,7 +54,7 @@
                                         
                                     </td>
                                     <td>
-                                        <button type="button" @click="abrirModal('cdc','actualizar',cdc)" class="btn btn-warning btn-sm">
+                                        <button type="button" @click="abrirModal('cdc','actualizar',cdc)" class="btn btn-primary btn-sm">
                                           <i class="icon-pencil"></i>
                                         </button> &nbsp;
                                         <template v-if="cdc.estado">

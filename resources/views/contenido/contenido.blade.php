@@ -33,11 +33,7 @@
         </template>
 
         <template v-if="menu==6">
-            <main class="main">
-                <div class="container-fluid">
-                    <h1>Inicio 6</h1>
-                </div>
-            </main>
+            <empleado></empleado>
         </template>
 
         <template v-if="menu==7">

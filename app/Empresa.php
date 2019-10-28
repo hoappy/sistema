@@ -9,7 +9,7 @@ class Empresa extends Model
     protected $table = 'empresa';
     protected $primaryKey = 'id_empresa';
     protected $fillable=[
-        'id_mutual', 'id_representante', 'id_cdc'. 'rut', 'dv', 'razonSocial', 'giro', 'correo', 'telefono', 'direccion', 'ciudad', 'comuna', 'region', 'estado'
+        'id_mutual', 'id_representante', 'id_cdc', 'rut', 'dv', 'razonSocial', 'giro', 'correo', 'telefono', 'direccion', 'ciudad', 'comuna', 'region', 'estado'
     ];
     public function mutual(){
         return $this->hasOne('App\Mutual');
