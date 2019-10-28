@@ -41034,7 +41034,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                     this.nombre = '';
                                     this.apellido1 = '';
                                     this.apellido2 = '';
-                                    this.fechaNnaci = '';
+                                    this.fechaNnaci = '1989-01-01';
                                     this.sexo = 0;
                                     this.diasVacas = 0;
                                     this.direccion = '';
@@ -41890,7 +41890,7 @@ var render = function() {
                           ],
                           staticClass: "form-control",
                           attrs: {
-                            type: "date(yyyy-mm-dd)",
+                            type: "date",
                             placeholder:
                               "Ingrese Fecha de Nacimiento del Empleado"
                           },
@@ -41949,7 +41949,7 @@ var render = function() {
                           [
                             _c(
                               "option",
-                              { attrs: { value: "", disabled: "" } },
+                              { attrs: { value: "2", disabled: "" } },
                               [_vm._v("Seleccione")]
                             ),
                             _vm._v(" "),
@@ -42162,7 +42162,7 @@ var render = function() {
                           [
                             _c(
                               "option",
-                              { attrs: { value: "", disabled: "" } },
+                              { attrs: { value: " ", disabled: "" } },
                               [_vm._v("Seleccione")]
                             ),
                             _vm._v(" "),
@@ -42238,7 +42238,7 @@ var render = function() {
                           [
                             _c(
                               "option",
-                              { attrs: { value: "", disabled: "" } },
+                              { attrs: { value: " ", disabled: "" } },
                               [_vm._v("Seleccione")]
                             ),
                             _vm._v(" "),
@@ -42316,7 +42316,7 @@ var render = function() {
                           [
                             _c(
                               "option",
-                              { attrs: { value: "", disabled: "" } },
+                              { attrs: { value: " ", disabled: "" } },
                               [_vm._v("Seleccione")]
                             ),
                             _vm._v(" "),
@@ -42390,7 +42390,7 @@ var render = function() {
                           [
                             _c(
                               "option",
-                              { attrs: { value: "", disabled: "" } },
+                              { attrs: { value: " ", disabled: "" } },
                               [_vm._v("Seleccione")]
                             ),
                             _vm._v(" "),

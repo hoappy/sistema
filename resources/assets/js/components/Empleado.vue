@@ -197,14 +197,14 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="date-input">Fecha de Nacimiento</label>
                                     <div class="col-md-9">
-                                        <input type="date(yyyy-mm-dd)"  v-model="fechaNnaci" class="form-control" placeholder="Ingrese Fecha de Nacimiento del Empleado">
+                                        <input type="date" v-model="fechaNnaci" class="form-control" placeholder="Ingrese Fecha de Nacimiento del Empleado">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="num-input">Sexo</label>
                                     <div class="col-md-9">
                                         <select class="form-control" v-model="sexo">
-                                            <option value="" disabled>Seleccione</option>
+                                            <option value="2" disabled>Seleccione</option>
                                             <option value="0">Hombre</option>
                                             <option value="1">Mujer</option>
                                         </select> 
@@ -238,7 +238,7 @@
                                     <label class="col-md-3 form-control-label" for="text-input">Estado Civil</label>
                                     <div class="col-md-9">
                                         <select class="form-control" v-model="estaoCivil">
-                                            <option value="" disabled>Seleccione</option>
+                                            <option value=" " disabled>Seleccione</option>
                                             <option value="Casado">Casado</option>
                                             <option value="Separado(a) judicialmente">Separado(a) judicialmente</option>
                                             <option value="Divorciado(a)">Divorciado(a)</option>
@@ -251,7 +251,7 @@
                                     <label class="col-md-3 form-control-label" for="text-input">Jornada</label>
                                     <div class="col-md-9">
                                         <select class="form-control" v-model="jornada">
-                                            <option value="" disabled>Seleccione</option>
+                                            <option value=" " disabled>Seleccione</option>
                                             <option value="Completa">Completa</option>
                                             <option value="Mañana">Mañana</option>
                                             <option value="Tarde">Tarde</option>
@@ -265,7 +265,7 @@
                                     <label class="col-md-3 form-control-label" for="text-input">Cargo</label>
                                     <div class="col-md-9">
                                         <select class="form-control" v-model="cargo">
-                                            <option value="" disabled>Seleccione</option>
+                                            <option value=" " disabled>Seleccione</option>
                                             <option value="Jefe">Jefe</option>
                                             <option value="Director">Director</option>
                                             <option value="Supervisor">Supervisor</option>
@@ -280,7 +280,7 @@
                                     <label class="col-md-3 form-control-label" for="text-input">tipo</label>
                                     <div class="col-md-9">
                                         <select class="form-control" v-model="tipo">
-                                            <option value="" disabled>Seleccione</option>
+                                            <option value=" " disabled>Seleccione</option>
                                             <option value="Pasivo">Pasivo</option>
                                             <option value="Activo">Activo</option>
                                         </select> 
@@ -625,7 +625,7 @@
                                 this.nombre = '';
                                 this.apellido1 = '';
                                 this.apellido2 = '';
-                                this.fechaNnaci = '';
+                                this.fechaNnaci = '1989-01-01';
                                 this.sexo = 0;
                                 this.diasVacas = 0;
                                 this.direccion = '';

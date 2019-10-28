@@ -63,7 +63,7 @@ class EmpleadoController extends Controller
         $empleado->nombre = $request->nombre;
         $empleado->apellido1 = $request->apellido1;
         $empleado->apellido2 = $request->apellido2;
-        $empleado->fechaNaci = $request->fechaNaci;
+        $empleado->fechaNnaci = $request->fechaNnaci;
         $empleado->sexo = $request->sexo;
         $empleado->diasVacas = $request->diasVacas;
         $empleado->direccion = $request->direccion;
@@ -96,7 +96,7 @@ class EmpleadoController extends Controller
         $empleado->nombre = $request->nombre;
         $empleado->apellido1 = $request->apellido1;
         $empleado->apellido2 = $request->apellido2;
-        $empleado->fechaNaci = $request->fechaNaci;
+        $empleado->fechaNnaci = $request->fechaNnaci;
         $empleado->sexo = $request->sexo;
         $empleado->diasVacas = $request->diasVacas;
         $empleado->direccion = $request->direccion;
