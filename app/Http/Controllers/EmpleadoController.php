@@ -19,14 +19,14 @@ class EmpleadoController extends Controller
         if ($buscar==''){
             $empleados = Empleado::join('afp','empleado.id_afp','=','afp.id_afp')
             ->join('salud','empleado.id_salud','=','salud.id_salud')
-            ->select('empleado.*','salud.nombre as salud','salud.valor as valorSalud','afp.nombre as afp','afp.valor as valorA'
+            ->select('empleado.*', 'salud.provision as provision','salud.nombre as salud','salud.valor as valorSalud','afp.nombre as afp','afp.valor as valorAfp'
                 )
             ->orderBy('empleado.estado', 'desc')->paginate(15);
         }
         else{
             $empleados = Empleado::join('afp','empleado.id_afp','=','afp.id_afp')
             ->join('salud','empleado.id_salud','=','salud.id_salud')
-            ->select('empleado.*','salud.nombre as salud','salud.valor as valorSalud','afp.nombre as afp','afp.valor as valorA'
+            ->select('empleado.*', 'salud.provision as provision','salud.nombre as salud','salud.valor as valorSalud','afp.nombre as afp','afp.valor as valorAfp'
                 )
             ->where('empleado'.$criterio, 'like', '%'. $buscar . '%')
             ->orderBy('empleado.estado', 'desc')->paginate(15);

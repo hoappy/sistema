@@ -40658,24 +40658,97 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             id_id_empleado: 0,
-            id_mutual: 0,
-            id_representante: 0,
-            id_cdc: 0,
+            id_salud: 0,
+            id_afp: 0,
             rut: 0,
             dv: '',
-            razonSocial: '',
-            giro: '',
-            correo: '',
-            telefono: 0,
+            nombre: '',
+            apellido1: '',
+            apellido2: '',
+            fechaNnaci: '',
+            sexo: 0,
+            diasVacas: 0,
             direccion: '',
-            ciudad: '',
-            comuna: '',
-            region: '',
+            seguriCesantia: 0,
+            descuentosSalud: 0,
+            estaoCivil: '',
+            jornada: '',
+            cargo: '',
+            tipo: '',
             arrayEmpleado: [],
             modal: 0,
             tituloModal: '',
@@ -40693,9 +40766,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             offset: 3,
             criterio: 'nombre',
             buscar: '',
-            arrayRepresentante: [],
-            arrayCdc: [],
-            arrayMutual: []
+            arrayAfp: [],
+            arraySalud: []
         };
     },
 
@@ -40728,24 +40800,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     methods: {
-        selectCdc: function selectCdc() {
+        selectAfp: function selectAfp() {
             var me = this;
-            var url = '/cdc/selectCdc';
+            var url = '/afp/selectAfp';
             axios.get(url).then(function (response) {
                 //console.log(response);
                 var respuesta = response.data;
-                me.arrayCdc = respuesta.cdcs;
+                me.arrayAfp = respuesta.afps;
             }).catch(function (error) {
                 console.log(error);
             });
         },
-        selectMutual: function selectMutual() {
+        selectSalud: function selectSalud() {
             var me = this;
-            var url = '/mutual/selectMutual';
+            var url = '/salud/selectSalud';
             axios.get(url).then(function (response) {
                 //console.log(response);
                 var respuesta = response.data;
-                me.arrayMutual = respuesta.mutuals;
+                me.arraySalud = respuesta.saluds;
             }).catch(function (error) {
                 console.log(error);
             });
@@ -40778,17 +40850,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.post('/empleado/registrar', {
                 'rut': this.rut,
                 'dv': this.dv,
-                'razonSocial': this.razonSocial,
-                'giro': this.giro,
-                'id_representante': this.id_representante,
-                'id_mutual': this.id_mutual,
-                'id_cdc': this.id_cdc,
-                'correo': this.correo,
-                'telefono': this.telefono,
+                'nombre': this.nombre,
+                'apellido1': this.apellido1,
+                'apellido2': this.apellido2,
+                'fechaNnaci': this.fechaNnaci,
+                'sexo': this.sexo,
+                'diasVacas': this.diasVacas,
                 'direccion': this.direccion,
-                'region': this.region,
-                'comuna': this.comuna,
-                'ciudad': this.ciudad
+                'seguriCesantia': this.seguriCesantia,
+                'descuentosSalud': this.descuentosSalud,
+                'estaoCivil': this.estaoCivil,
+                'jornada': this.jornada,
+                'cargo': this.cargo,
+                'tipo': this.tipo,
+                'id_salud': this.id_salud,
+                'id_afp': this.id_afp
             }).then(function (response) {
                 me.cerrarModal();
                 me.listarEmpleado(1, '', 'nombre');
@@ -40806,17 +40882,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.put('/empleado/actualizar', {
                 'rut': this.rut,
                 'dv': this.dv,
-                'razonSocial': this.razonSocial,
-                'giro': this.giro,
-                'id_representante': this.id_representante,
-                'id_mutual': this.id_mutual,
-                'id_cdc': this.id_cdc,
-                'correo': this.correo,
-                'telefono': this.telefono,
+                'nombre': this.nombre,
+                'apellido1': this.apellido1,
+                'apellido2': this.apellido2,
+                'fechaNnaci': this.fechaNnaci,
+                'sexo': this.sexo,
+                'diasVacas': this.diasVacas,
                 'direccion': this.direccion,
-                'region': this.region,
-                'comuna': this.comuna,
-                'ciudad': this.ciudad,
+                'seguriCesantia': this.seguriCesantia,
+                'descuentosSalud': this.descuentosSalud,
+                'estaoCivil': this.estaoCivil,
+                'jornada': this.jornada,
+                'cargo': this.cargo,
+                'tipo': this.tipo,
+                'id_salud': this.id_salud,
+                'id_afp': this.id_afp,
                 'id_empleado': this.id_id_empleado
             }).then(function (response) {
                 me.cerrarModal();
@@ -40829,7 +40909,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             swal({
-                title: 'Esta seguro de desactivar esta Empleado?',
+                title: 'Esta seguri de desactivar esta Empleado?',
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -40861,7 +40941,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this2 = this;
 
             swal({
-                title: 'Esta seguro de activar esta Empleado?',
+                title: 'Esta seguri de activar esta Empleado?',
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -40895,17 +40975,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             if (!this.rut) this.errorMostrarMsjEmpleado.push("El RUT del Empleado no puede estar vacío.");
             if (!this.dv) this.errorMostrarMsjEmpleado.push("El Digito  Verificador no puede estar vacío.");
-            if (!this.razonSocial) this.errorMostrarMsjEmpleado.push("El campo Razon Social no puede estar vacío.");
-            if (!this.giro) this.errorMostrarMsjEmpleado.push("El campo Giro no puede estar vacío.");
-            if (!this.id_mutual) this.errorMostrarMsjEmpleado.push("Tiene que seleccionar un Representante para la Empleado.");
-            if (!this.id_mutual) this.errorMostrarMsjEmpleado.push("Tiene que seleccionar una Mutual para la Empleado.");
-            if (!this.id_cdc) this.errorMostrarMsjEmpleado.push("Tiene que seleccionar una Caja de Compensacion para la Empleado.");
-            if (!this.correo) this.errorMostrarMsjEmpleado.push("El campo Razon Social no puede estar vacío.");
-            if (!this.telefono) this.errorMostrarMsjEmpleado.push("El campo Telefono no puede estar vacío.");
+            if (!this.nombre) this.errorMostrarMsjEmpleado.push("El campo Nombre no puede estar vacío.");
+            if (!this.apellido1) this.errorMostrarMsjEmpleado.push("El campo Apellido Paterno no puede estar vacío.");
+            if (!this.apellido2) this.errorMostrarMsjEmpleado.push("El campo Apellido Materno no puede estar vacío.");
+            if (!this.id_salud) this.errorMostrarMsjEmpleado.push("Tiene que seleccionar la Provision para la Empleado.");
+            if (!this.id_afp) this.errorMostrarMsjEmpleado.push("Tiene que seleccionar la AFP del Empleado.");
+            if (!this.fechaNnaci) this.errorMostrarMsjEmpleado.push("El Fecha Nacimiento no puede estar vacío.");
+            if (!this.sexo) this.errorMostrarMsjEmpleado.push("El campo Sexo no puede estar vacío.");
+            if (!this.diasVacas) this.errorMostrarMsjEmpleado.push("El campo Dias Vacaciones no puede estar vacío.");
             if (!this.direccion) this.errorMostrarMsjEmpleado.push("El campo Direccion no puede estar vacío.");
-            if (!this.region) this.errorMostrarMsjEmpleado.push("El campo Region no puede estar vacío.");
-            if (!this.comuna) this.errorMostrarMsjEmpleado.push("El campo Comuna no puede estar vacío.");
-            if (!this.ciudad) this.errorMostrarMsjEmpleado.push("El campo Ciudad no puede estar vacío.");
+            if (!this.seguriCesantia) this.errorMostrarMsjEmpleado.push("El campo Seguro de Cesantia no puede estar vacío.");
+            if (!this.descuentosSalud) this.errorMostrarMsjEmpleado.push("El campo Descuento Salud no puede estar vacío.");
+            if (!this.estaoCivil) this.errorMostrarMsjEmpleado.push("El campo Estado Civil no puede estar vacío.");
+            if (!this.jornada) this.errorMostrarMsjEmpleado.push("El campo Jornada no puede estar vacío.");
+            if (!this.cargo) this.errorMostrarMsjEmpleado.push("El campo Cargo no puede estar vacío.");
+            if (!this.tipo) this.errorMostrarMsjEmpleado.push("El campo Tipo no puede estar vacío.");
 
             if (this.errorMostrarMsjEmpleado.length) this.errorEmpleado = 1;
 
@@ -40914,19 +40998,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         cerrarModal: function cerrarModal() {
             this.modal = 0;
             this.tituloModal = '';
+            this.id_salud = 0;
+            this.id_afp = 0;
             this.rut = 0;
             this.dv = '';
-            this.razonSocial = '';
-            this.giro = '';
-            this.id_representante = 0;
-            this.id_mutual = 0;
-            this.id_cdc = 0;
-            this.correo = '';
-            this.telenofo = 0;
+            this.nombre = '';
+            this.apellido1 = '';
+            this.apellido2 = '';
+            this.fechaNnaci = '';
+            this.sexo = 0;
+            this.diasVacas = 0;
             this.direccion = '';
-            this.region = '';
-            this.comuna = '';
-            this.ciudad = '';
+            this.seguriCesantia = 0;
+            this.descuentosSalud = 0;
+            this.estaoCivil = '';
+            this.jornada = '';
+            this.cargo = '';
+            this.tipo = '';
         },
         abrirModal: function abrirModal(modelo, accion) {
             var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
@@ -40939,19 +41027,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                 {
                                     this.modal = 1;
                                     this.tituloModal = 'Registrar Empleado';
+                                    this.id_salud = 0;
+                                    this.id_afp = 0;
                                     this.rut = 0;
                                     this.dv = '';
-                                    this.razonSocial = '';
-                                    this.giro = '';
-                                    this.id_representante = 0;
-                                    this.id_mutual = 0;
-                                    this.id_cdc = 0;
-                                    this.correo = '';
-                                    this.telefono = 0;
+                                    this.nombre = '';
+                                    this.apellido1 = '';
+                                    this.apellido2 = '';
+                                    this.fechaNnaci = '';
+                                    this.sexo = 0;
+                                    this.diasVacas = 0;
                                     this.direccion = '';
-                                    this.region = '';
-                                    this.comuna = '';
-                                    this.ciudad = '';
+                                    this.seguriCesantia = 0;
+                                    this.descuentosSalud = 0;
+                                    this.estaoCivil = '';
+                                    this.jornada = '';
+                                    this.cargo = '';
+                                    this.tipo = '';
                                     this.tipoAccion = 1;
                                     break;
                                 }
@@ -40962,27 +41054,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                     this.tituloModal = 'Actualizar Empleado';
                                     this.tipoAccion = 2;
                                     this.id_id_empleado = data['id_empleado'];
+                                    this.id_salud = data['id_salud'];
+                                    this.id_afp = data['id_afp'];
                                     this.rut = data['rut'];
                                     this.dv = data['dv'];
-                                    this.razonSocial = data['razonSocial'];
-                                    this.giro = data['giro'];
-                                    this.id_representante = data['id_representante'];
-                                    this.id_mutual = data['id_mutual'];
-                                    this.id_cdc = data['id_cdc'];
-                                    this.correo = data['correo'];
-                                    this.telefono = data['telefono'];
+                                    this.nombre = data['nombre'];
+                                    this.apellido1 = data['apellido1'];
+                                    this.apellido2 = data['apellido2'];
+                                    this.fechaNnaci = 'fechaNnaci';
+                                    this.sexo = data['sexo'];
+                                    this.diasVacas = data['diasVacas'];
                                     this.direccion = data['direccion'];
-                                    this.region = data['region'];
-                                    this.comuna = data['comuna'];
-                                    this.ciudad = data['ciudad'];
+                                    this.seguriCesantia = data['seguriCesantia'];
+                                    this.descuentosSalud = data['descuentosSalud'];
+                                    this.estaoCivil = data['estaoCivil'];
+                                    this.jornada = data['jornada'];
+                                    this.cargo = data['cargo'];
+                                    this.tipo = data['tipo'];
                                     break;
                                 }
                         }
                     }
             }
-            this.selectRepresentante();
-            this.selectCdc();
-            this.selectMutual();
+            this.selectAfp();
+            this.selectSalud();
         }
     },
     mounted: function mounted() {
@@ -41059,32 +41154,24 @@ var render = function() {
                   [
                     _c("option", { attrs: { value: "rut" } }, [_vm._v("RUT")]),
                     _vm._v(" "),
-                    _c("option", { attrs: { value: "razonSocial" } }, [
-                      _vm._v("Razon Social")
+                    _c("option", { attrs: { value: "nombre" } }, [
+                      _vm._v("Nombre")
                     ]),
                     _vm._v(" "),
-                    _c("option", { attrs: { value: "giro" } }, [
-                      _vm._v("giro")
+                    _c("option", { attrs: { value: "apellido1" } }, [
+                      _vm._v("Apellido Paterno")
                     ]),
                     _vm._v(" "),
-                    _c("option", { attrs: { value: "representante" } }, [
-                      _vm._v("Representannte")
+                    _c("option", { attrs: { value: "apellido2" } }, [
+                      _vm._v("Apellido Materno")
                     ]),
                     _vm._v(" "),
                     _c("option", { attrs: { value: "direccion" } }, [
                       _vm._v("Direccion")
                     ]),
                     _vm._v(" "),
-                    _c("option", { attrs: { value: "region" } }, [
-                      _vm._v("Region")
-                    ]),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "comuna" } }, [
-                      _vm._v("Comuna")
-                    ]),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "ciudad" } }, [
-                      _vm._v("Ciudad")
+                    _c("option", { attrs: { value: "cargo" } }, [
+                      _vm._v("cargo")
                     ])
                   ]
                 ),
@@ -41154,55 +41241,101 @@ var render = function() {
                     }),
                     _vm._v(" "),
                     _c("td", {
-                      domProps: { textContent: _vm._s(empleado.razonSocial) }
-                    }),
-                    _vm._v(" "),
-                    _c("td", {
-                      domProps: { textContent: _vm._s(empleado.giro) }
+                      domProps: { textContent: _vm._s(empleado.nombre) }
                     }),
                     _vm._v(" "),
                     _c("td", {
                       domProps: {
                         textContent: _vm._s(
-                          empleado.representanteNombre +
-                            " " +
-                            empleado.representanteAp1 +
-                            " " +
-                            empleado.representanteAp2
+                          empleado.apellido1 + " " + empleado.apellido2
                         )
                       }
                     }),
                     _vm._v(" "),
+                    _c("td", [
+                      empleado.provision
+                        ? _c("div", [
+                            _c("div", {
+                              domProps: {
+                                textContent: _vm._s(
+                                  empleado.salud + " / Fonasa"
+                                )
+                              }
+                            })
+                          ])
+                        : _c("div", [
+                            _c("div", {
+                              domProps: {
+                                textContent: _vm._s(
+                                  empleado.salud + " / Isapre"
+                                )
+                              }
+                            })
+                          ])
+                    ]),
+                    _vm._v(" "),
                     _c("td", {
-                      domProps: { textContent: _vm._s(empleado.mutual) }
+                      domProps: { textContent: _vm._s(empleado.valorSalud) }
                     }),
                     _vm._v(" "),
                     _c("td", {
-                      domProps: { textContent: _vm._s(empleado.cdc) }
+                      domProps: { textContent: _vm._s(empleado.afp) }
                     }),
                     _vm._v(" "),
                     _c("td", {
-                      domProps: { textContent: _vm._s(empleado.correo) }
+                      domProps: { textContent: _vm._s(empleado.valorAfp) }
                     }),
                     _vm._v(" "),
                     _c("td", {
-                      domProps: { textContent: _vm._s(empleado.telefono) }
+                      domProps: { textContent: _vm._s(empleado.fechaNnaci) }
                     }),
+                    _vm._v(" "),
+                    _c("td", [
+                      empleado.sexo
+                        ? _c("div", [
+                            _vm._v(
+                              "\n                                   Hombre\n                                "
+                            )
+                          ])
+                        : _c("div", [
+                            _vm._v(
+                              "\n                                    Mujer\n                                "
+                            )
+                          ])
+                    ]),
                     _vm._v(" "),
                     _c("td", {
                       domProps: { textContent: _vm._s(empleado.direccion) }
                     }),
                     _vm._v(" "),
                     _c("td", {
-                      domProps: { textContent: _vm._s(empleado.region) }
+                      domProps: { textContent: _vm._s(empleado.seguriCesantia) }
                     }),
                     _vm._v(" "),
                     _c("td", {
-                      domProps: { textContent: _vm._s(empleado.comuna) }
+                      domProps: {
+                        textContent: _vm._s(empleado.descuentosSalud)
+                      }
                     }),
                     _vm._v(" "),
                     _c("td", {
-                      domProps: { textContent: _vm._s(empleado.ciudad) }
+                      domProps: { textContent: _vm._s(empleado.estaoCivil) }
+                    }),
+                    _vm._v(" "),
+                    _c("td", {
+                      domProps: { textContent: _vm._s(empleado.jornada) }
+                    }),
+                    _vm._v(" "),
+                    _c("td", {
+                      domProps: { textContent: _vm._s(empleado.cargo) }
+                    }),
+                    _vm._v(" "),
+                    _c("td", {
+                      domProps: { textContent: _vm._s(empleado.tipo) }
+                    }),
+                    _vm._v(" "),
+                    _c("td", {
+                      domProps: { textContent: _vm._s(empleado.diasVacas) }
                     }),
                     _vm._v(" "),
                     _c("td", [
@@ -41506,7 +41639,7 @@ var render = function() {
                           staticClass: "col-md-3 form-control-label",
                           attrs: { for: "text-input" }
                         },
-                        [_vm._v("Razon Social")]
+                        [_vm._v("Nombres")]
                       ),
                       _vm._v(" "),
                       _c("div", { staticClass: "col-md-9" }, [
@@ -41515,22 +41648,22 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.razonSocial,
-                              expression: "razonSocial"
+                              value: _vm.nombre,
+                              expression: "nombre"
                             }
                           ],
                           staticClass: "form-control",
                           attrs: {
                             type: "text",
-                            placeholder: "Ingrese Razon Social de la Empleado"
+                            placeholder: "Ingrese Nombres del Empleado"
                           },
-                          domProps: { value: _vm.razonSocial },
+                          domProps: { value: _vm.nombre },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
                                 return
                               }
-                              _vm.razonSocial = $event.target.value
+                              _vm.nombre = $event.target.value
                             }
                           }
                         })
@@ -41544,7 +41677,7 @@ var render = function() {
                           staticClass: "col-md-3 form-control-label",
                           attrs: { for: "text-input" }
                         },
-                        [_vm._v("Giro")]
+                        [_vm._v("Apellido Paterno")]
                       ),
                       _vm._v(" "),
                       _c("div", { staticClass: "col-md-9" }, [
@@ -41553,22 +41686,22 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.giro,
-                              expression: "giro"
+                              value: _vm.apellido1,
+                              expression: "apellido1"
                             }
                           ],
                           staticClass: "form-control",
                           attrs: {
                             type: "text",
-                            placeholder: "Ingrese Giro de la Empleado"
+                            placeholder: "Ingrese Apellido Paterno del Empleado"
                           },
-                          domProps: { value: _vm.giro },
+                          domProps: { value: _vm.apellido1 },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
                                 return
                               }
-                              _vm.giro = $event.target.value
+                              _vm.apellido1 = $event.target.value
                             }
                           }
                         })
@@ -41582,7 +41715,45 @@ var render = function() {
                           staticClass: "col-md-3 form-control-label",
                           attrs: { for: "text-input" }
                         },
-                        [_vm._v("Representante")]
+                        [_vm._v("Apellido Materno")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-9" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.apellido2,
+                              expression: "apellido2"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            placeholder: "Ingrese Materno Paterno del Empleado"
+                          },
+                          domProps: { value: _vm.apellido2 },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.apellido2 = $event.target.value
+                            }
+                          }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-md-3 form-control-label",
+                          attrs: { for: "text-input" }
+                        },
+                        [_vm._v("Provision (Salud: Fonasa/Isapre")]
                       ),
                       _vm._v(" "),
                       _c("div", { staticClass: "col-md-9" }, [
@@ -41593,8 +41764,8 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.id_representante,
-                                expression: "id_representante"
+                                value: _vm.id_salud,
+                                expression: "id_salud"
                               }
                             ],
                             staticClass: "form-control",
@@ -41608,7 +41779,7 @@ var render = function() {
                                     var val = "_value" in o ? o._value : o.value
                                     return val
                                   })
-                                _vm.id_representante = $event.target.multiple
+                                _vm.id_salud = $event.target.multiple
                                   ? $$selectedVal
                                   : $$selectedVal[0]
                               }
@@ -41621,20 +41792,12 @@ var render = function() {
                               [_vm._v("Seleccione")]
                             ),
                             _vm._v(" "),
-                            _vm._l(_vm.arrayRepresentante, function(
-                              representante
-                            ) {
+                            _vm._l(_vm.arraySalud, function(salud) {
                               return _c("option", {
-                                key: representante.id_representante,
+                                key: salud.id_salud,
                                 domProps: {
-                                  value: representante.id_representante,
-                                  textContent: _vm._s(
-                                    representante.nombre +
-                                      " " +
-                                      representante.apellido1 +
-                                      " " +
-                                      representante.apellido2
-                                  )
+                                  value: salud.id_salud,
+                                  textContent: _vm._s(salud.nombre)
                                 }
                               })
                             })
@@ -41651,7 +41814,7 @@ var render = function() {
                           staticClass: "col-md-3 form-control-label",
                           attrs: { for: "text-input" }
                         },
-                        [_vm._v("Mutual")]
+                        [_vm._v("AFP")]
                       ),
                       _vm._v(" "),
                       _c("div", { staticClass: "col-md-9" }, [
@@ -41662,8 +41825,8 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.id_mutual,
-                                expression: "id_mutual"
+                                value: _vm.id_afp,
+                                expression: "id_afp"
                               }
                             ],
                             staticClass: "form-control",
@@ -41677,7 +41840,7 @@ var render = function() {
                                     var val = "_value" in o ? o._value : o.value
                                     return val
                                   })
-                                _vm.id_mutual = $event.target.multiple
+                                _vm.id_afp = $event.target.multiple
                                   ? $$selectedVal
                                   : $$selectedVal[0]
                               }
@@ -41690,12 +41853,12 @@ var render = function() {
                               [_vm._v("Seleccione")]
                             ),
                             _vm._v(" "),
-                            _vm._l(_vm.arrayMutual, function(mutual) {
+                            _vm._l(_vm.arrayAfp, function(afp) {
                               return _c("option", {
-                                key: mutual.id_mutual,
+                                key: afp.id_afp,
                                 domProps: {
-                                  value: mutual.id_mutual,
-                                  textContent: _vm._s(mutual.nombre)
+                                  value: afp.id_afp,
+                                  textContent: _vm._s(afp.nombre)
                                 }
                               })
                             })
@@ -41710,70 +41873,9 @@ var render = function() {
                         "label",
                         {
                           staticClass: "col-md-3 form-control-label",
-                          attrs: { for: "text-input" }
+                          attrs: { for: "date-input" }
                         },
-                        [_vm._v("cdc")]
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-9" }, [
-                        _c(
-                          "select",
-                          {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.id_cdc,
-                                expression: "id_cdc"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            on: {
-                              change: function($event) {
-                                var $$selectedVal = Array.prototype.filter
-                                  .call($event.target.options, function(o) {
-                                    return o.selected
-                                  })
-                                  .map(function(o) {
-                                    var val = "_value" in o ? o._value : o.value
-                                    return val
-                                  })
-                                _vm.id_cdc = $event.target.multiple
-                                  ? $$selectedVal
-                                  : $$selectedVal[0]
-                              }
-                            }
-                          },
-                          [
-                            _c(
-                              "option",
-                              { attrs: { value: "0", disabled: "" } },
-                              [_vm._v("Seleccione")]
-                            ),
-                            _vm._v(" "),
-                            _vm._l(_vm.arrayCdc, function(cdc) {
-                              return _c("option", {
-                                key: cdc.id_cdc,
-                                domProps: {
-                                  value: cdc.id_cdc,
-                                  textContent: _vm._s(cdc.nombre)
-                                }
-                              })
-                            })
-                          ],
-                          2
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group row" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "col-md-3 form-control-label",
-                          attrs: { for: "text-input" }
-                        },
-                        [_vm._v("Correo")]
+                        [_vm._v("Fecha de Nacimiento")]
                       ),
                       _vm._v(" "),
                       _c("div", { staticClass: "col-md-9" }, [
@@ -41782,22 +41884,23 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.correo,
-                              expression: "correo"
+                              value: _vm.fechaNnaci,
+                              expression: "fechaNnaci"
                             }
                           ],
                           staticClass: "form-control",
                           attrs: {
-                            type: "text",
-                            placeholder: "Ingrese el Correo de la Empleado"
+                            type: "date(yyyy-mm-dd)",
+                            placeholder:
+                              "Ingrese Fecha de Nacimiento del Empleado"
                           },
-                          domProps: { value: _vm.correo },
+                          domProps: { value: _vm.fechaNnaci },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
                                 return
                               }
-                              _vm.correo = $event.target.value
+                              _vm.fechaNnaci = $event.target.value
                             }
                           }
                         })
@@ -41809,9 +41912,67 @@ var render = function() {
                         "label",
                         {
                           staticClass: "col-md-3 form-control-label",
+                          attrs: { for: "num-input" }
+                        },
+                        [_vm._v("Sexo")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-9" }, [
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.sexo,
+                                expression: "sexo"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.sexo = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "option",
+                              { attrs: { value: "", disabled: "" } },
+                              [_vm._v("Seleccione")]
+                            ),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "0" } }, [
+                              _vm._v("Hombre")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "1" } }, [
+                              _vm._v("Mujer")
+                            ])
+                          ]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-md-3 form-control-label",
                           attrs: { for: "text-input" }
                         },
-                        [_vm._v("telefono")]
+                        [_vm._v("Dias de Vacaciones")]
                       ),
                       _vm._v(" "),
                       _c("div", { staticClass: "col-md-9" }, [
@@ -41820,23 +41981,23 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.telefono,
-                              expression: "telefono"
+                              value: _vm.diasVacas,
+                              expression: "diasVacas"
                             }
                           ],
                           staticClass: "form-control",
                           attrs: {
                             type: "number",
                             placeholder:
-                              "Ingrese Telefono o cCelular de la Empleado"
+                              "Ingrese dias de Vacaciones del Empleado"
                           },
-                          domProps: { value: _vm.telefono },
+                          domProps: { value: _vm.diasVacas },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
                                 return
                               }
-                              _vm.telefono = $event.target.value
+                              _vm.diasVacas = $event.target.value
                             }
                           }
                         })
@@ -41866,7 +42027,7 @@ var render = function() {
                           staticClass: "form-control",
                           attrs: {
                             type: "text",
-                            placeholder: "Ingrese la Direccion de la Empleado"
+                            placeholder: "Ingrese la direccion del Empleado"
                           },
                           domProps: { value: _vm.direccion },
                           on: {
@@ -41888,7 +42049,7 @@ var render = function() {
                           staticClass: "col-md-3 form-control-label",
                           attrs: { for: "text-input" }
                         },
-                        [_vm._v("Region")]
+                        [_vm._v("Seguro de Cesantia")]
                       ),
                       _vm._v(" "),
                       _c("div", { staticClass: "col-md-9" }, [
@@ -41897,22 +42058,23 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.region,
-                              expression: "region"
+                              value: _vm.seguriCesantia,
+                              expression: "seguriCesantia"
                             }
                           ],
                           staticClass: "form-control",
                           attrs: {
-                            type: "text",
-                            placeholder: "Ingrese la Region de la Empleado"
+                            type: "number",
+                            placeholder:
+                              "Ingrese Seguro de Cesantia del Empleado"
                           },
-                          domProps: { value: _vm.region },
+                          domProps: { value: _vm.seguriCesantia },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
                                 return
                               }
-                              _vm.region = $event.target.value
+                              _vm.seguriCesantia = $event.target.value
                             }
                           }
                         })
@@ -41926,7 +42088,7 @@ var render = function() {
                           staticClass: "col-md-3 form-control-label",
                           attrs: { for: "text-input" }
                         },
-                        [_vm._v("Comuna")]
+                        [_vm._v("Descuentos de Salud")]
                       ),
                       _vm._v(" "),
                       _c("div", { staticClass: "col-md-9" }, [
@@ -41935,22 +42097,23 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.comuna,
-                              expression: "comuna"
+                              value: _vm.descuentosSalud,
+                              expression: "descuentosSalud"
                             }
                           ],
                           staticClass: "form-control",
                           attrs: {
-                            type: "text",
-                            placeholder: "Ingrese la Comuna de la Empleado"
+                            type: "number",
+                            placeholder:
+                              "Ingrese los Descuentos de Salud del Empleado"
                           },
-                          domProps: { value: _vm.comuna },
+                          domProps: { value: _vm.descuentosSalud },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
                                 return
                               }
-                              _vm.comuna = $event.target.value
+                              _vm.descuentosSalud = $event.target.value
                             }
                           }
                         })
@@ -41964,63 +42127,284 @@ var render = function() {
                           staticClass: "col-md-3 form-control-label",
                           attrs: { for: "text-input" }
                         },
-                        [_vm._v("Ciudad")]
+                        [_vm._v("Estado Civil")]
                       ),
                       _vm._v(" "),
                       _c("div", { staticClass: "col-md-9" }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.ciudad,
-                              expression: "ciudad"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "text",
-                            placeholder: "Ingrese la Ciudad de la Empleado"
-                          },
-                          domProps: { value: _vm.ciudad },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.ciudad = $event.target.value
-                            }
-                          }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.errorEmpleado,
-                            expression: "errorEmpleado"
-                          }
-                        ],
-                        staticClass: "form-group row div-error"
-                      },
-                      [
                         _c(
-                          "div",
-                          { staticClass: "text-center text-error" },
-                          _vm._l(_vm.errorMostrarMsjEmpleado, function(error) {
-                            return _c("div", {
-                              key: error,
-                              domProps: { textContent: _vm._s(error) }
-                            })
-                          })
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.estaoCivil,
+                                expression: "estaoCivil"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.estaoCivil = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "option",
+                              { attrs: { value: "", disabled: "" } },
+                              [_vm._v("Seleccione")]
+                            ),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Casado" } }, [
+                              _vm._v("Casado")
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "Separado(a) judicialmente" } },
+                              [_vm._v("Separado(a) judicialmente")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "Divorciado(a)" } },
+                              [_vm._v("Divorciado(a)")]
+                            ),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Viudo(a)" } }, [
+                              _vm._v("Viudo(a)")
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "Conviviente Civil" } },
+                              [_vm._v("Conviviente Civil")]
+                            )
+                          ]
                         )
-                      ]
-                    )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-md-3 form-control-label",
+                          attrs: { for: "text-input" }
+                        },
+                        [_vm._v("Jornada")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-9" }, [
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.jornada,
+                                expression: "jornada"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.jornada = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "option",
+                              { attrs: { value: "", disabled: "" } },
+                              [_vm._v("Seleccione")]
+                            ),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Completa" } }, [
+                              _vm._v("Completa")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Mañana" } }, [
+                              _vm._v("Mañana")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Tarde" } }, [
+                              _vm._v("Tarde")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Noche" } }, [
+                              _vm._v("Noche")
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "Horario Libre????" } },
+                              [_vm._v("Horario Libre????")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "Por Turnos???" } },
+                              [_vm._v("Por Turnos???")]
+                            )
+                          ]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-md-3 form-control-label",
+                          attrs: { for: "text-input" }
+                        },
+                        [_vm._v("Cargo")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-9" }, [
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.cargo,
+                                expression: "cargo"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.cargo = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "option",
+                              { attrs: { value: "", disabled: "" } },
+                              [_vm._v("Seleccione")]
+                            ),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Jefe" } }, [
+                              _vm._v("Jefe")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Director" } }, [
+                              _vm._v("Director")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Supervisor" } }, [
+                              _vm._v("Supervisor")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Gerente" } }, [
+                              _vm._v("Gerente")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Obrero" } }, [
+                              _vm._v("Obrero")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Temporero" } }, [
+                              _vm._v("Temporero")
+                            ])
+                          ]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-md-3 form-control-label",
+                          attrs: { for: "text-input" }
+                        },
+                        [_vm._v("tipo")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-9" }, [
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.tipo,
+                                expression: "tipo"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.tipo = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "option",
+                              { attrs: { value: "", disabled: "" } },
+                              [_vm._v("Seleccione")]
+                            ),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Pasivo" } }, [
+                              _vm._v("Pasivo")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Activo" } }, [
+                              _vm._v("Activo")
+                            ])
+                          ]
+                        )
+                      ])
+                    ])
                   ]
                 )
               ]),
@@ -42098,27 +42482,37 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_vm._v("RUT")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Razon Social")]),
+        _c("th", [_vm._v("Nombre")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Giro")]),
+        _c("th", [_vm._v("Apellidos")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Representante")]),
+        _c("th", [_vm._v("Provision")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Mutual")]),
+        _c("th", [_vm._v("Valor Provision")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Caja de Compensacion")]),
+        _c("th", [_vm._v("AFP")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Correo")]),
+        _c("th", [_vm._v("Valor AFP")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Telefono")]),
+        _c("th", [_vm._v("Fecha de Nacimiento")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Sexo")]),
         _vm._v(" "),
         _c("th", [_vm._v("Direccion")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Region")]),
+        _c("th", [_vm._v("Seguro de cesantia")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Comuna")]),
+        _c("th", [_vm._v("descuentos Salud")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Ciudad")]),
+        _c("th", [_vm._v("Estado Civil")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Jornada")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Cargo")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Tipo")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Dias de Vacaciones")]),
         _vm._v(" "),
         _c("th", [_vm._v("Estado")]),
         _vm._v(" "),

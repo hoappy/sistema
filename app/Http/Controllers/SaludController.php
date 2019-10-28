@@ -11,7 +11,7 @@ class SaludController extends Controller
     public function selectSalud(Request $request){
         if (!$request->ajax()) return redirect('/');
         $saluds = Salud::where('estado','=','1')
-        ->select('id_salud','nombre')->orderBy('nombre', 'asc')->get();
+        ->select('id_salud','nombre','provision')->orderBy('nombre', 'asc')->get();
         return ['saluds' => $saluds];
     }
 

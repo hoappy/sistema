@@ -9,7 +9,7 @@ class Empleado extends Model
     protected $table = 'empleado';
     protected $primaryKey = 'id_empleado';
     protected $fillable=[
-        'id_afp', 'id_salud', 'rut', 'dv', 'nombre', 'apellido1', 'apellido2', 'fechaNnaci', 'sexo', 'diasVacas', 'direccion', 'seguroCesantia',
+        'id_afp', 'id_salud', 'rut', 'dv', 'nombre', 'apellido1', 'apellido2', 'fechaNnaci', 'sexo', 'diasVacas', 'direccion', 'seguriCesantia',
         'descuentosSalud', 'estaoCivil', 'jornada', 'cargo', 'tipo', 'estado'
     ];
     public function afp(){

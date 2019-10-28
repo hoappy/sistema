@@ -21,13 +21,12 @@
                                 <div class="input-group">
                                     <select class="form-control col-md-3" v-model="criterio">
                                       <option value="rut">RUT</option>
-                                      <option value="razonSocial">Razon Social</option>
-                                      <option value="giro">giro</option>
-                                      <option value="representante">Representannte</option>
+                                      <option value="nombre">Nombre</option>
+                                      <option value="apellido1">Apellido Paterno</option>
+                                      <option value="apellido2">Apellido Materno</option>
                                       <option value="direccion">Direccion</option>
-                                      <option value="region">Region</option>
-                                      <option value="comuna">Comuna</option>
-                                      <option value="ciudad">Ciudad</option>
+                                      <!--<option value="sexo">sexo</option>-->
+                                      <option value="cargo">cargo</option>
                                     </select>
                                     <input type="text" v-model="buscar" @keyup.enter="listarEmpleado(1,buscar,criterio)" class="form-control" placeholder="Texto a buscar">
                                     <button type="submit" @click="listarEmpleado(1,buscar,criterio)" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
@@ -38,17 +37,22 @@
                             <thead>
                                 <tr>
                                     <th>RUT</th>
-                                    <th>Razon Social</th>
-                                    <th>Giro</th>
-                                    <th>Representante</th>
-                                    <th>Mutual</th>
-                                    <th>Caja de Compensacion</th>
-                                    <th>Correo</th>
-                                    <th>Telefono</th>
+                                    <th>Nombre</th>
+                                    <th>Apellidos</th>
+                                    <th>Provision</th>
+                                    <th>Valor Provision</th>
+                                    <th>AFP</th>
+                                    <th>Valor AFP</th>
+                                    <th>Fecha de Nacimiento</th>
+                                    <th>Sexo</th>
                                     <th>Direccion</th>
-                                    <th>Region</th>
-                                    <th>Comuna</th>
-                                    <th>Ciudad</th>
+                                    <th>Seguro de cesantia</th>
+                                    <th>descuentos Salud</th>
+                                    <th>Estado Civil</th>
+                                    <th>Jornada</th>
+                                    <th>Cargo</th>
+                                    <th>Tipo</th>
+                                    <th>Dias de Vacaciones</th>
                                     <th>Estado</th>
                                     <th>Opciones</th>
                                 </tr>
@@ -56,17 +60,36 @@
                             <tbody>
                                 <tr v-for="empleado in arrayEmpleado" :key="empleado.id_empleado">
                                     <td v-text="empleado.rut + '-' + empleado.dv"></td>
-                                    <td v-text="empleado.razonSocial"></td>
-                                    <td v-text="empleado.giro"></td>
-                                    <td v-text="empleado.representanteNombre + ' ' + empleado.representanteAp1 + ' ' + empleado.representanteAp2"></td>
-                                    <td v-text="empleado.mutual"></td>
-                                    <td v-text="empleado.cdc"></td>
-                                    <td v-text="empleado.correo"></td>
-                                    <td v-text="empleado.telefono"></td>
+                                    <td v-text="empleado.nombre"></td>
+                                    <td v-text="empleado.apellido1 + ' ' + empleado.apellido2"></td>
+                                    <td>
+                                        <div v-if="empleado.provision">
+                                            <div v-text="empleado.salud + ' / Fonasa'"></div>
+                                        </div>
+                                        <div v-else>
+                                            <div v-text="empleado.salud + ' / Isapre'"></div>
+                                        </div>
+                                    </td>
+                                    <td v-text="empleado.valorSalud"></td>
+                                    <td v-text="empleado.afp"></td>
+                                    <td v-text="empleado.valorAfp"></td>
+                                    <td v-text="empleado.fechaNnaci"></td>
+                                    <td>
+                                        <div v-if="empleado.sexo">
+                                           Hombre
+                                        </div>
+                                        <div v-else>
+                                            Mujer
+                                        </div>
+                                    </td>
                                     <td v-text="empleado.direccion"></td>
-                                    <td v-text="empleado.region"></td>
-                                    <td v-text="empleado.comuna"></td>
-                                    <td v-text="empleado.ciudad"></td>
+                                    <td v-text="empleado.seguriCesantia"></td>
+                                    <td v-text="empleado.descuentosSalud"></td>
+                                    <td v-text="empleado.estaoCivil"></td>
+                                    <td v-text="empleado.jornada"></td>
+                                    <td v-text="empleado.cargo"></td>
+                                    <td v-text="empleado.tipo"></td>
+                                    <td v-text="empleado.diasVacas"></td>
                                     <td>
                                         <div v-if="empleado.estado">
                                             <span class="badge badge-success">Activo</span>
@@ -74,7 +97,6 @@
                                         <div v-else>
                                             <span class="badge badge-danger">Desactivado</span>
                                         </div>
-                                        
                                     </td>
                                     <td>
                                         <button type="button" @click="abrirModal('empleado','actualizar',empleado)" class="btn btn-primary btn-sm">
@@ -135,86 +157,133 @@
                                         <input type="text" v-model="dv" class="form-control" placeholder="Ingrese Digito  Verificador del RUT">
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="text-input">Razon Social</label>
+                                 <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="text-input">Nombres</label>
                                     <div class="col-md-9">
-                                        <input type="text" v-model="razonSocial" class="form-control" placeholder="Ingrese Razon Social de la Empleado">
+                                        <input type="text" v-model="nombre" class="form-control" placeholder="Ingrese Nombres del Empleado">
+                                        
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="text-input">Giro</label>
+                                    <label class="col-md-3 form-control-label" for="text-input">Apellido Paterno</label>
                                     <div class="col-md-9">
-                                        <input type="text" v-model="giro" class="form-control" placeholder="Ingrese Giro de la Empleado">
+                                        <input type="text" v-model="apellido1" class="form-control" placeholder="Ingrese Apellido Paterno del Empleado">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="text-input">Representante</label>
+                                    <label class="col-md-3 form-control-label" for="text-input">Apellido Materno</label>
                                     <div class="col-md-9">
-                                        <select class="form-control" v-model="id_representante">
+                                        <input type="text" v-model="apellido2" class="form-control" placeholder="Ingrese Materno Paterno del Empleado">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="text-input">Provision (Salud: Fonasa/Isapre</label>
+                                    <div class="col-md-9">
+                                        <select class="form-control" v-model="id_salud">
                                             <option value="0" disabled>Seleccione</option>
-                                            <option v-for="representante in arrayRepresentante" :key="representante.id_representante" :value="representante.id_representante" v-text="representante.nombre + ' ' + representante.apellido1 + ' ' + representante.apellido2"></option>
+                                               <option v-for="salud in arraySalud" :key="salud.id_salud" :value="salud.id_salud" v-text="salud.nombre"></option>
                                         </select> 
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="text-input">Mutual</label>
+                                    <label class="col-md-3 form-control-label" for="text-input">AFP</label>
                                     <div class="col-md-9">
-                                        <select class="form-control" v-model="id_mutual">
+                                        <select class="form-control" v-model="id_afp">
                                             <option value="0" disabled>Seleccione</option>
-                                            <option v-for="mutual in arrayMutual" :key="mutual.id_mutual" :value="mutual.id_mutual" v-text="mutual.nombre"></option>
+                                            <option v-for="afp in arrayAfp" :key="afp.id_afp" :value="afp.id_afp" v-text="afp.nombre"></option>
                                         </select> 
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="text-input">cdc</label>
+                                    <label class="col-md-3 form-control-label" for="date-input">Fecha de Nacimiento</label>
                                     <div class="col-md-9">
-                                        <select class="form-control" v-model="id_cdc">
-                                            <option value="0" disabled>Seleccione</option>
-                                            <option v-for="cdc in arrayCdc" :key="cdc.id_cdc" :value="cdc.id_cdc" v-text="cdc.nombre"></option>
+                                        <input type="date(yyyy-mm-dd)"  v-model="fechaNnaci" class="form-control" placeholder="Ingrese Fecha de Nacimiento del Empleado">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="num-input">Sexo</label>
+                                    <div class="col-md-9">
+                                        <select class="form-control" v-model="sexo">
+                                            <option value="" disabled>Seleccione</option>
+                                            <option value="0">Hombre</option>
+                                            <option value="1">Mujer</option>
                                         </select> 
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="text-input">Correo</label>
+                                    <label class="col-md-3 form-control-label" for="text-input">Dias de Vacaciones</label>
                                     <div class="col-md-9">
-                                        <input type="text" v-model="correo" class="form-control" placeholder="Ingrese el Correo de la Empleado">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="text-input">telefono</label>
-                                    <div class="col-md-9">
-                                        <input type="number" v-model="telefono" class="form-control" placeholder="Ingrese Telefono o cCelular de la Empleado">
+                                        <input type="number" v-model="diasVacas" class="form-control" placeholder="Ingrese dias de Vacaciones del Empleado">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="text-input">Direccion</label>
                                     <div class="col-md-9">
-                                        <input type="text" v-model="direccion" class="form-control" placeholder="Ingrese la Direccion de la Empleado">
+                                        <input type="text" v-model="direccion" class="form-control" placeholder="Ingrese la direccion del Empleado">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="text-input">Region</label>
+                                    <label class="col-md-3 form-control-label" for="text-input">Seguro de Cesantia</label>
                                     <div class="col-md-9">
-                                        <input type="text" v-model="region" class="form-control" placeholder="Ingrese la Region de la Empleado">
+                                        <input type="number" v-model="seguriCesantia" class="form-control" placeholder="Ingrese Seguro de Cesantia del Empleado">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="text-input">Comuna</label>
+                                    <label class="col-md-3 form-control-label" for="text-input">Descuentos de Salud</label>
                                     <div class="col-md-9">
-                                        <input type="text" v-model="comuna" class="form-control" placeholder="Ingrese la Comuna de la Empleado">
+                                        <input type="number" v-model="descuentosSalud" class="form-control" placeholder="Ingrese los Descuentos de Salud del Empleado">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="text-input">Ciudad</label>
+                                    <label class="col-md-3 form-control-label" for="text-input">Estado Civil</label>
                                     <div class="col-md-9">
-                                        <input type="text" v-model="ciudad" class="form-control" placeholder="Ingrese la Ciudad de la Empleado">
+                                        <select class="form-control" v-model="estaoCivil">
+                                            <option value="" disabled>Seleccione</option>
+                                            <option value="Casado">Casado</option>
+                                            <option value="Separado(a) judicialmente">Separado(a) judicialmente</option>
+                                            <option value="Divorciado(a)">Divorciado(a)</option>
+                                            <option value="Viudo(a)">Viudo(a)</option>
+                                            <option value="Conviviente Civil">Conviviente Civil</option>
+                                        </select> 
                                     </div>
                                 </div>
-                                <div v-show="errorEmpleado" class="form-group row div-error">
-                                    <div class="text-center text-error">
-                                        <div v-for="error in errorMostrarMsjEmpleado" :key="error" v-text="error">
-
-                                        </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="text-input">Jornada</label>
+                                    <div class="col-md-9">
+                                        <select class="form-control" v-model="jornada">
+                                            <option value="" disabled>Seleccione</option>
+                                            <option value="Completa">Completa</option>
+                                            <option value="Mañana">Mañana</option>
+                                            <option value="Tarde">Tarde</option>
+                                            <option value="Noche">Noche</option>
+                                            <option value="Horario Libre????">Horario Libre????</option>
+                                            <option value="Por Turnos???">Por Turnos???</option>
+                                        </select> 
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="text-input">Cargo</label>
+                                    <div class="col-md-9">
+                                        <select class="form-control" v-model="cargo">
+                                            <option value="" disabled>Seleccione</option>
+                                            <option value="Jefe">Jefe</option>
+                                            <option value="Director">Director</option>
+                                            <option value="Supervisor">Supervisor</option>
+                                            <option value="Gerente">Gerente</option>
+                                            <!--<option value="Perkin">Conviviente Civil</option>-->
+                                            <option value="Obrero">Obrero</option>
+                                            <option value="Temporero">Temporero</option>
+                                        </select> 
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="text-input">tipo</label>
+                                    <div class="col-md-9">
+                                        <select class="form-control" v-model="tipo">
+                                            <option value="" disabled>Seleccione</option>
+                                            <option value="Pasivo">Pasivo</option>
+                                            <option value="Activo">Activo</option>
+                                        </select> 
                                     </div>
                                 </div>
 
@@ -239,19 +308,23 @@
         data (){
             return {
                 id_id_empleado: 0,
-                id_mutual : 0,
-                id_representante : 0,
-                id_cdc : 0,
+                id_salud : 0,
+                id_afp : 0,
                 rut : 0,
                 dv : '',
-                razonSocial : '',
-                giro : '',
-                correo : '',
-                telefono : 0,
+                nombre : '',
+                apellido1 : '',
+                apellido2 : '',
+                fechaNnaci : '',
+                sexo : 0,
+                diasVacas : 0,
                 direccion : '',
-                ciudad : '',
-                comuna  : '',
-                region : '',
+                seguriCesantia  : 0,
+                descuentosSalud : 0,
+                estaoCivil : '',
+                jornada : '',
+                cargo : '',
+                tipo : '',
                 arrayEmpleado : [],
                 modal : 0,
                 tituloModal : '',
@@ -269,9 +342,8 @@
                 offset : 3,
                 criterio : 'nombre',
                 buscar : '',
-                arrayRepresentante : [],
-                arrayCdc :[],
-                arrayMutual: []
+                arrayAfp :[],
+                arraySalud: []
             }
         },
         computed:{
@@ -304,25 +376,25 @@
             }
         },
         methods : {
-            selectCdc(){
+            selectAfp(){
                 let me=this;
-                var url= '/cdc/selectCdc';
+                var url= '/afp/selectAfp';
                 axios.get(url).then(function (response) {
                     //console.log(response);
                     var respuesta= response.data;
-                    me.arrayCdc = respuesta.cdcs;
+                    me.arrayAfp = respuesta.afps;
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
             },
-            selectMutual(){
+            selectSalud(){
                 let me=this;
-                var url= '/mutual/selectMutual';
+                var url= '/salud/selectSalud';
                 axios.get(url).then(function (response) {
                     //console.log(response);
                     var respuesta= response.data;
-                    me.arrayMutual = respuesta.mutuals;
+                    me.arraySalud = respuesta.saluds;
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -357,17 +429,21 @@
                 axios.post('/empleado/registrar',{
                     'rut': this.rut,
                     'dv': this.dv,
-                    'razonSocial': this.razonSocial,
-                    'giro': this.giro,
-                    'id_representante': this.id_representante,
-                    'id_mutual': this.id_mutual,
-                    'id_cdc': this.id_cdc,
-                    'correo': this.correo,
-                    'telefono': this.telefono,
+                    'nombre': this.nombre,
+                    'apellido1': this.apellido1,
+                    'apellido2': this.apellido2,
+                    'fechaNnaci': this.fechaNnaci,
+                    'sexo': this.sexo,
+                    'diasVacas': this.diasVacas,
                     'direccion': this.direccion,
-                    'region': this.region,
-                    'comuna': this.comuna,
-                    'ciudad': this.ciudad,
+                    'seguriCesantia': this.seguriCesantia,
+                    'descuentosSalud': this.descuentosSalud,
+                    'estaoCivil': this.estaoCivil,
+                    'jornada': this.jornada,
+                    'cargo': this.cargo,
+                    'tipo': this.tipo,
+                    'id_salud': this.id_salud,
+                    'id_afp': this.id_afp
                 }).then(function (response) {
                     me.cerrarModal();
                     me.listarEmpleado(1,'','nombre');
@@ -385,17 +461,21 @@
                 axios.put('/empleado/actualizar',{
                     'rut': this.rut,
                     'dv': this.dv,
-                    'razonSocial': this.razonSocial,
-                    'giro': this.giro,
-                    'id_representante': this.id_representante,
-                    'id_mutual': this.id_mutual,
-                    'id_cdc': this.id_cdc,
-                    'correo': this.correo,
-                    'telefono': this.telefono,
+                    'nombre': this.nombre,
+                    'apellido1': this.apellido1,
+                    'apellido2': this.apellido2,
+                    'fechaNnaci': this.fechaNnaci,
+                    'sexo': this.sexo,
+                    'diasVacas': this.diasVacas,
                     'direccion': this.direccion,
-                    'region': this.region,
-                    'comuna': this.comuna,
-                    'ciudad': this.ciudad,
+                    'seguriCesantia': this.seguriCesantia,
+                    'descuentosSalud': this.descuentosSalud,
+                    'estaoCivil': this.estaoCivil,
+                    'jornada': this.jornada,
+                    'cargo': this.cargo,
+                    'tipo': this.tipo,
+                    'id_salud': this.id_salud,
+                    'id_afp': this.id_afp,
                     'id_empleado': this.id_id_empleado
                 }).then(function (response) {
                     me.cerrarModal();
@@ -406,7 +486,7 @@
             },
             desactivarEmpleado(id_empleado){
                swal({
-                title: 'Esta seguro de desactivar esta Empleado?',
+                title: 'Esta seguri de desactivar esta Empleado?',
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -445,7 +525,7 @@
             },
             activarEmpleado(id_empleado){
                swal({
-                title: 'Esta seguro de activar esta Empleado?',
+                title: 'Esta seguri de activar esta Empleado?',
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -488,17 +568,21 @@
 
                 if (!this.rut) this.errorMostrarMsjEmpleado.push("El RUT del Empleado no puede estar vacío.");
                 if (!this.dv) this.errorMostrarMsjEmpleado.push("El Digito  Verificador no puede estar vacío.");
-                if (!this.razonSocial) this.errorMostrarMsjEmpleado.push("El campo Razon Social no puede estar vacío.");
-                if (!this.giro) this.errorMostrarMsjEmpleado.push("El campo Giro no puede estar vacío.");
-                if (!this.id_mutual) this.errorMostrarMsjEmpleado.push("Tiene que seleccionar un Representante para la Empleado.");
-                if (!this.id_mutual) this.errorMostrarMsjEmpleado.push("Tiene que seleccionar una Mutual para la Empleado.");
-                if (!this.id_cdc) this.errorMostrarMsjEmpleado.push("Tiene que seleccionar una Caja de Compensacion para la Empleado.");
-                if (!this.correo) this.errorMostrarMsjEmpleado.push("El campo Razon Social no puede estar vacío.");
-                if (!this.telefono) this.errorMostrarMsjEmpleado.push("El campo Telefono no puede estar vacío.");
+                if (!this.nombre) this.errorMostrarMsjEmpleado.push("El campo Nombre no puede estar vacío.");
+                if (!this.apellido1) this.errorMostrarMsjEmpleado.push("El campo Apellido Paterno no puede estar vacío.");
+                if (!this.apellido2) this.errorMostrarMsjEmpleado.push("El campo Apellido Materno no puede estar vacío.");
+                if (!this.id_salud) this.errorMostrarMsjEmpleado.push("Tiene que seleccionar la Provision para la Empleado.");
+                if (!this.id_afp) this.errorMostrarMsjEmpleado.push("Tiene que seleccionar la AFP del Empleado.");
+                if (!this.fechaNnaci) this.errorMostrarMsjEmpleado.push("El Fecha Nacimiento no puede estar vacío.");
+                if (!this.sexo) this.errorMostrarMsjEmpleado.push("El campo Sexo no puede estar vacío.");
+                if (!this.diasVacas) this.errorMostrarMsjEmpleado.push("El campo Dias Vacaciones no puede estar vacío.");
                 if (!this.direccion) this.errorMostrarMsjEmpleado.push("El campo Direccion no puede estar vacío.");
-                if (!this.region) this.errorMostrarMsjEmpleado.push("El campo Region no puede estar vacío.");
-                if (!this.comuna) this.errorMostrarMsjEmpleado.push("El campo Comuna no puede estar vacío.");
-                if (!this.ciudad) this.errorMostrarMsjEmpleado.push("El campo Ciudad no puede estar vacío.");
+                if (!this.seguriCesantia) this.errorMostrarMsjEmpleado.push("El campo Seguro de Cesantia no puede estar vacío.");
+                if (!this.descuentosSalud) this.errorMostrarMsjEmpleado.push("El campo Descuento Salud no puede estar vacío.");
+                if (!this.estaoCivil) this.errorMostrarMsjEmpleado.push("El campo Estado Civil no puede estar vacío.");
+                if (!this.jornada) this.errorMostrarMsjEmpleado.push("El campo Jornada no puede estar vacío.");
+                if (!this.cargo) this.errorMostrarMsjEmpleado.push("El campo Cargo no puede estar vacío.");
+                if (!this.tipo) this.errorMostrarMsjEmpleado.push("El campo Tipo no puede estar vacío.");
 
                 if (this.errorMostrarMsjEmpleado.length) this.errorEmpleado = 1;
 
@@ -507,19 +591,23 @@
             cerrarModal(){
                 this.modal=0;
                 this.tituloModal='';
-                this.rut= 0;
-                this.dv= '';
-                this.razonSocial= '';
-                this.giro= '';
-                this.id_representante= 0;
-                this.id_mutual= 0;
-                this.id_cdc= 0;
-                this.correo= '';
-                this.telenofo= 0;
-                this.direccion= '';
-                this.region= '';
-                this.comuna= '';
-                this.ciudad= '';
+                this.id_salud = 0;
+                this.id_afp = 0;
+                this.rut = 0;
+                this.dv = '';
+                this.nombre = '';
+                this.apellido1 = '';
+                this.apellido2 = '';
+                this.fechaNnaci = '';
+                this.sexo = 0;
+                this.diasVacas = 0;
+                this.direccion = '';
+                this.seguriCesantia  = 0;
+                this.descuentosSalud = 0;
+                this.estaoCivil = '';
+                this.jornada = '';
+                this.cargo = '';
+                this.tipo = ''
             },
             abrirModal(modelo, accion, data = []){
                 switch(modelo){
@@ -530,19 +618,23 @@
                             {
                                 this.modal = 1;
                                 this.tituloModal = 'Registrar Empleado';
-                                this.rut= 0;
-                                this.dv= '';
-                                this.razonSocial= '';
-                                this.giro= '';
-                                this.id_representante= 0;
-                                this.id_mutual= 0;
-                                this.id_cdc= 0;
-                                this.correo= '';
-                                this.telefono= 0;
-                                this.direccion= '';
-                                this.region= '';
-                                this.comuna= '';
-                                this.ciudad= '';
+                                this.id_salud = 0;
+                                this.id_afp = 0;
+                                this.rut = 0;
+                                this.dv = '';
+                                this.nombre = '';
+                                this.apellido1 = '';
+                                this.apellido2 = '';
+                                this.fechaNnaci = '';
+                                this.sexo = 0;
+                                this.diasVacas = 0;
+                                this.direccion = '';
+                                this.seguriCesantia  = 0;
+                                this.descuentosSalud = 0;
+                                this.estaoCivil = '';
+                                this.jornada = '';
+                                this.cargo = '';
+                                this.tipo = ''
                                 this.tipoAccion = 1;
                                 break;
                             }
@@ -553,27 +645,30 @@
                                 this.tituloModal = 'Actualizar Empleado';
                                 this.tipoAccion = 2;
                                 this.id_id_empleado = data['id_empleado'];
+                                this.id_salud = data['id_salud'];
+                                this.id_afp = data['id_afp'];
                                 this.rut = data['rut'];
                                 this.dv = data['dv'];
-                                this.razonSocial = data['razonSocial'];
-                                this.giro = data['giro'];
-                                this.id_representante = data['id_representante'];
-                                this.id_mutual = data['id_mutual'];
-                                this.id_cdc = data['id_cdc'];
-                                this.correo = data['correo'];
-                                this.telefono = data['telefono'];
+                                this.nombre = data['nombre'];
+                                this.apellido1 = data['apellido1'];
+                                this.apellido2 = data['apellido2'];
+                                this.fechaNnaci = 'fechaNnaci';
+                                this.sexo = data['sexo'];
+                                this.diasVacas = data['diasVacas'];
                                 this.direccion = data['direccion'];
-                                this.region = data['region'];
-                                this.comuna = data['comuna'];
-                                this.ciudad = data['ciudad'];
+                                this.seguriCesantia  = data['seguriCesantia'];
+                                this.descuentosSalud = data['descuentosSalud'];
+                                this.estaoCivil = data['estaoCivil'];
+                                this.jornada = data['jornada'];
+                                this.cargo = data['cargo'];
+                                this.tipo = data['tipo'];
                                 break;
                             }
                         }
                     }
                 }
-                this.selectRepresentante();
-                this.selectCdc();
-                this.selectMutual();
+                this.selectAfp();
+                this.selectSalud();
             }
         },
         mounted() {
