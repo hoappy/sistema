@@ -64,22 +64,22 @@
                                     <td v-text="empleado.apellido1 + ' ' + empleado.apellido2"></td>
                                     <td>
                                         <div v-if="empleado.provision">
-                                            <div v-text="empleado.salud + ' / Fonasa'"></div>
+                                            <div v-text="'Fonasa / ' +empleado.salud"></div>
                                         </div>
                                         <div v-else>
                                             <div v-text="empleado.salud + ' / Isapre'"></div>
                                         </div>
                                     </td>
-                                    <td v-text="empleado.valorSalud"></td>
+                                    <td v-text="empleado.valorSalud + '%'"></td>
                                     <td v-text="empleado.afp"></td>
-                                    <td v-text="empleado.valorAfp"></td>
+                                    <td v-text="empleado.valorAfp + '%'"></td>
                                     <td v-text="empleado.fechaNnaci"></td>
                                     <td>
                                         <div v-if="empleado.sexo">
-                                           Hombre
+                                           Masculino
                                         </div>
                                         <div v-else>
-                                            Mujer
+                                            Femenino    
                                         </div>
                                     </td>
                                     <td v-text="empleado.direccion"></td>
@@ -181,7 +181,16 @@
                                     <div class="col-md-9">
                                         <select class="form-control" v-model="id_salud">
                                             <option value="0" disabled>Seleccione</option>
-                                               <option v-for="salud in arraySalud" :key="salud.id_salud" :value="salud.id_salud" v-text="salud.nombre"></option>
+                                                <option v-for="salud in arraySalud" :key="salud.id_salud" :value="salud.id_salud">
+                                                    <div v-if="salud.provision == '1'">
+                                                        <div v-text="'Fonasa Fondo - ' + salud.nombre">
+                                                        </div> 
+                                                    </div>
+                                                    <div v-else>
+                                                        <div v-text="'Isapre - ' + salud.nombre">
+                                                        </div>
+                                                    </div>   
+                                                </option>
                                         </select> 
                                     </div>
                                 </div>
@@ -270,7 +279,7 @@
                                             <option value="Director">Director</option>
                                             <option value="Supervisor">Supervisor</option>
                                             <option value="Gerente">Gerente</option>
-                                            <!--<option value="Perkin">Conviviente Civil</option>-->
+                                            <!--<option value="Perkin">Perkin</option>-->
                                             <option value="Obrero">Obrero</option>
                                             <option value="Temporero">Temporero</option>
                                         </select> 
@@ -694,5 +703,15 @@
     .text-error{
         color: red !important;
         font-weight: bold;
+    }
+    
+
+    /* Important part */
+    .modal-dialog{
+        overflow-y: initial !important
+    }
+    .modal-body{
+        height: 500px;
+        overflow-y: auto;
     }
 </style>

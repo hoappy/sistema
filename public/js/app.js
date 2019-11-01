@@ -39420,6 +39420,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -39633,7 +39653,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                     this.tituloModal = 'Registrar Provision de Salud';
                                     this.nombre = '';
                                     this.descripcion = '';
-                                    this.provision = 0;
+                                    this.provision = '';
                                     this.provision = '';
                                     this.tipoAccion = 1;
                                     break;
@@ -40035,82 +40055,6 @@ var render = function() {
                         "label",
                         {
                           staticClass: "col-md-3 form-control-label",
-                          attrs: { for: "text-input" }
-                        },
-                        [_vm._v("Nombre")]
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-9" }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.nombre,
-                              expression: "nombre"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "text",
-                            placeholder: "Nombre de categoría"
-                          },
-                          domProps: { value: _vm.nombre },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.nombre = $event.target.value
-                            }
-                          }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group row" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "col-md-3 form-control-label",
-                          attrs: { for: "text-input" }
-                        },
-                        [_vm._v("Descripción")]
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-9" }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.descripcion,
-                              expression: "descripcion"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "descripcion",
-                            placeholder: "Ingrese descripción"
-                          },
-                          domProps: { value: _vm.descripcion },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.descripcion = $event.target.value
-                            }
-                          }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group row" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "col-md-3 form-control-label",
                           attrs: { for: "num-input" }
                         },
                         [_vm._v("Provision")]
@@ -40161,6 +40105,173 @@ var render = function() {
                             ])
                           ]
                         )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _vm.provision === "0"
+                      ? _c("div", [
+                          _c("div", { staticClass: "form-group row" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "col-md-3 form-control-label",
+                                attrs: { for: "text-input" }
+                              },
+                              [_vm._v("Nombre")]
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "col-md-9" }, [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.nombre,
+                                    expression: "nombre"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: {
+                                  type: "text",
+                                  placeholder: "Nombre Isapre"
+                                },
+                                domProps: { value: _vm.nombre },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.nombre = $event.target.value
+                                  }
+                                }
+                              })
+                            ])
+                          ])
+                        ])
+                      : _c("div", [
+                          _vm.provision === "1"
+                            ? _c("div", [
+                                _c("div", { staticClass: "form-group row" }, [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass:
+                                        "col-md-3 form-control-label",
+                                      attrs: { for: "text-input" }
+                                    },
+                                    [_vm._v("Tramo")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "col-md-9" }, [
+                                    _c(
+                                      "select",
+                                      {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.nombre,
+                                            expression: "nombre"
+                                          }
+                                        ],
+                                        staticClass: "form-control",
+                                        on: {
+                                          change: function($event) {
+                                            var $$selectedVal = Array.prototype.filter
+                                              .call(
+                                                $event.target.options,
+                                                function(o) {
+                                                  return o.selected
+                                                }
+                                              )
+                                              .map(function(o) {
+                                                var val =
+                                                  "_value" in o
+                                                    ? o._value
+                                                    : o.value
+                                                return val
+                                              })
+                                            _vm.nombre = $event.target.multiple
+                                              ? $$selectedVal
+                                              : $$selectedVal[0]
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "option",
+                                          {
+                                            attrs: { value: "", disabled: "" }
+                                          },
+                                          [_vm._v("Seleccione")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "option",
+                                          { attrs: { value: "A" } },
+                                          [_vm._v("A")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "option",
+                                          { attrs: { value: "B" } },
+                                          [_vm._v("B")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "option",
+                                          { attrs: { value: "C" } },
+                                          [_vm._v("C")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "option",
+                                          { attrs: { value: "D" } },
+                                          [_vm._v("D")]
+                                        )
+                                      ]
+                                    )
+                                  ])
+                                ])
+                              ])
+                            : _c("div")
+                        ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-md-3 form-control-label",
+                          attrs: { for: "text-input" }
+                        },
+                        [_vm._v("Descripción")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-9" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.descripcion,
+                              expression: "descripcion"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "descripcion",
+                            placeholder: "Ingrese descripción"
+                          },
+                          domProps: { value: _vm.descripcion },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.descripcion = $event.target.value
+                            }
+                          }
+                        })
                       ])
                     ]),
                     _vm._v(" "),
@@ -40411,7 +40522,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    position: absolute !important;\n}\n.mostrar{\n    display: list-item !important;\n    opacity: 1 !important;\n    position: absolute !important;\n    background-color: #3c29297a !important;\n}\n.div-error{\n    display: flex;\n    justify-content: center;\n}\n.text-error{\n    color: red !important;\n    font-weight: bold;\n}\n", ""]);
+exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    position: absolute !important;\n}\n.mostrar{\n    display: list-item !important;\n    opacity: 1 !important;\n    position: absolute !important;\n    background-color: #3c29297a !important;\n}\n.div-error{\n    display: flex;\n    justify-content: center;\n}\n.text-error{\n    color: red !important;\n    font-weight: bold;\n}\n\n\n/* Important part */\n.modal-dialog{\n    overflow-y: initial !important\n}\n.modal-body{\n    height: 500px;\n    overflow-y: auto;\n}\n", ""]);
 
 // exports
 
@@ -40422,6 +40533,15 @@ exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    pos
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -41258,7 +41378,7 @@ var render = function() {
                             _c("div", {
                               domProps: {
                                 textContent: _vm._s(
-                                  empleado.salud + " / Fonasa"
+                                  "Fonasa / " + empleado.salud
                                 )
                               }
                             })
@@ -41275,7 +41395,9 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("td", {
-                      domProps: { textContent: _vm._s(empleado.valorSalud) }
+                      domProps: {
+                        textContent: _vm._s(empleado.valorSalud + "%")
+                      }
                     }),
                     _vm._v(" "),
                     _c("td", {
@@ -41283,7 +41405,7 @@ var render = function() {
                     }),
                     _vm._v(" "),
                     _c("td", {
-                      domProps: { textContent: _vm._s(empleado.valorAfp) }
+                      domProps: { textContent: _vm._s(empleado.valorAfp + "%") }
                     }),
                     _vm._v(" "),
                     _c("td", {
@@ -41294,12 +41416,12 @@ var render = function() {
                       empleado.sexo
                         ? _c("div", [
                             _vm._v(
-                              "\n                                   Hombre\n                                "
+                              "\n                                   Masculino\n                                "
                             )
                           ])
                         : _c("div", [
                             _vm._v(
-                              "\n                                    Mujer\n                                "
+                              "\n                                    Femenino    \n                                "
                             )
                           ])
                     ]),
@@ -41793,13 +41915,34 @@ var render = function() {
                             ),
                             _vm._v(" "),
                             _vm._l(_vm.arraySalud, function(salud) {
-                              return _c("option", {
-                                key: salud.id_salud,
-                                domProps: {
-                                  value: salud.id_salud,
-                                  textContent: _vm._s(salud.nombre)
-                                }
-                              })
+                              return _c(
+                                "option",
+                                {
+                                  key: salud.id_salud,
+                                  domProps: { value: salud.id_salud }
+                                },
+                                [
+                                  salud.provision == "1"
+                                    ? _c("div", [
+                                        _c("div", {
+                                          domProps: {
+                                            textContent: _vm._s(
+                                              "Fonasa Fondo - " + salud.nombre
+                                            )
+                                          }
+                                        })
+                                      ])
+                                    : _c("div", [
+                                        _c("div", {
+                                          domProps: {
+                                            textContent: _vm._s(
+                                              "Isapre - " + salud.nombre
+                                            )
+                                          }
+                                        })
+                                      ])
+                                ]
+                              )
                             })
                           ],
                           2

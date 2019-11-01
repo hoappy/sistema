@@ -11,7 +11,7 @@ class AfpController extends Controller
     public function selectAfp(Request $request){
         if (!$request->ajax()) return redirect('/');
         $afps = Afp::where('estado','=','1')
-        ->select('id_afp','nombre')->orderBy('nombre', 'asc')->get();
+        ->select('id_afp','nombre','valor')->orderBy('nombre', 'asc')->get();
         return ['afps' => $afps];
     }
 

@@ -109,19 +109,6 @@
                         <div class="modal-body">
                             <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
                                 <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="text-input">Nombre</label>
-                                    <div class="col-md-9">
-                                        <input type="text" v-model="nombre" class="form-control" placeholder="Nombre de categoría">
-                                        
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="text-input">Descripción</label>
-                                    <div class="col-md-9">
-                                        <input type="descripcion" v-model="descripcion" class="form-control" placeholder="Ingrese descripción">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="num-input">Provision</label>
                                     <div class="col-md-9">
                                         <select class="form-control" v-model="provision">
@@ -129,6 +116,39 @@
                                             <option value="0">Isapre</option>
                                             <option value="1">Fonasa</option>
                                         </select> 
+                                    </div>
+                                </div>
+                                <div v-if="provision === '0'">
+                                    <div class="form-group row">
+                                        <label class="col-md-3 form-control-label" for="text-input">Nombre</label>
+                                        <div class="col-md-9">
+                                            <input type="text" v-model="nombre" class="form-control" placeholder="Nombre Isapre">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div v-else>   
+                                    <div v-if="provision === '1'"> 
+                                        <div class="form-group row">
+                                            <label class="col-md-3 form-control-label" for="text-input">Tramo</label>
+                                            <div class="col-md-9">
+                                                <select class="form-control" v-model="nombre">
+                                                    <option value="" disabled>Seleccione</option>
+                                                    <option value="A">A</option>
+                                                    <option value="B">B</option>
+                                                    <option value="C">C</option>
+                                                    <option value="D">D</option>
+                                                </select> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div v-else>
+
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="text-input">Descripción</label>
+                                    <div class="col-md-9">
+                                        <input type="descripcion" v-model="descripcion" class="form-control" placeholder="Ingrese descripción">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -387,7 +407,7 @@
                                 this.tituloModal = 'Registrar Provision de Salud';
                                 this.nombre= '';
                                 this.descripcion = '';
-                                this.provision=0;
+                                this.provision= '';
                                 this.provision = '';
                                 this.tipoAccion = 1;
                                 break;
