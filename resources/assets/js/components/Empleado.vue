@@ -10,7 +10,7 @@
                 <!-- Ejemplo de tabla Listado -->
                 <div class="card">
                     <div class="card-header">
-                        <i class="fa fa-align-justify"></i> Empleado
+                        <i class="fa fa-align-justify"></i> Trabajador
                         <button type="button" @click="abrirModal('empleado','registrar')" class="btn btn-secondary">
                             <i class="icon-plus"></i>&nbsp;Nuevo
                         </button>
@@ -39,8 +39,8 @@
                                     <th>RUT</th>
                                     <th>Nombre</th>
                                     <th>Apellidos</th>
-                                    <th>Provision</th>
-                                    <th>Valor Provision</th>
+                                    <th>Prevision</th>
+                                    <th>Valor Prevision</th>
                                     <th>AFP</th>
                                     <th>Valor AFP</th>
                                     <th>Fecha de Nacimiento</th>
@@ -148,7 +148,7 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="text-input">RUT</label>
                                     <div class="col-md-9">
-                                        <input type="number" v-model="rut" class="form-control" placeholder="Ingrese RUT del Empleado">
+                                        <input type="number" v-model="rut" class="form-control" placeholder="Ingrese RUT del Trabajador">
                                     </div>
                                 </div>    
                                 <div class="form-group row">
@@ -160,24 +160,24 @@
                                  <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="text-input">Nombres</label>
                                     <div class="col-md-9">
-                                        <input type="text" v-model="nombre" class="form-control" placeholder="Ingrese Nombres del Empleado">
+                                        <input type="text" v-model="nombre" class="form-control" placeholder="Ingrese Nombres del Trabajador">
                                         
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="text-input">Apellido Paterno</label>
                                     <div class="col-md-9">
-                                        <input type="text" v-model="apellido1" class="form-control" placeholder="Ingrese Apellido Paterno del Empleado">
+                                        <input type="text" v-model="apellido1" class="form-control" placeholder="Ingrese Apellido Paterno del Trabajador">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="text-input">Apellido Materno</label>
                                     <div class="col-md-9">
-                                        <input type="text" v-model="apellido2" class="form-control" placeholder="Ingrese Materno Paterno del Empleado">
+                                        <input type="text" v-model="apellido2" class="form-control" placeholder="Ingrese Materno Paterno del Trabajador">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="text-input">Provision (Salud: Fonasa/Isapre</label>
+                                    <label class="col-md-3 form-control-label" for="text-input">Prevision Salud: Fonasa/Isapre</label>
                                     <div class="col-md-9">
                                         <select class="form-control" v-model="id_salud">
                                             <option value="0" disabled>Seleccione</option>
@@ -195,6 +195,12 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="text-input">Valor Prevision</label>
+                                    <div class="col-md-9">
+                                        <input type="number" v-model="valorSalud" class="form-control" placeholder="Ingrese el Valor de la Prevision del Trabajador">
+                                    </div>
+                                </div> 
+                                <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="text-input">AFP</label>
                                     <div class="col-md-9">
                                         <select class="form-control" v-model="id_afp">
@@ -206,7 +212,7 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="date-input">Fecha de Nacimiento</label>
                                     <div class="col-md-9">
-                                        <input type="date" v-model="fechaNnaci" class="form-control" placeholder="Ingrese Fecha de Nacimiento del Empleado">
+                                        <input type="date" v-model="fechaNnaci" class="form-control" placeholder="Ingrese Fecha de Nacimiento del Trabajador">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -222,25 +228,25 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="text-input">Dias de Vacaciones</label>
                                     <div class="col-md-9">
-                                        <input type="number" v-model="diasVacas" class="form-control" placeholder="Ingrese dias de Vacaciones del Empleado">
+                                        <input type="number" v-model="diasVacas" class="form-control" placeholder="Ingrese dias de Vacaciones del Trabajador">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="text-input">Direccion</label>
                                     <div class="col-md-9">
-                                        <input type="text" v-model="direccion" class="form-control" placeholder="Ingrese la direccion del Empleado">
+                                        <input type="text" v-model="direccion" class="form-control" placeholder="Ingrese la direccion del Trabajador">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="text-input">Seguro de Cesantia</label>
                                     <div class="col-md-9">
-                                        <input type="number" v-model="seguroCesantia" class="form-control" placeholder="Ingrese Seguro de Cesantia del Empleado">
+                                        <input type="number" v-model="seguroCesantia" class="form-control" placeholder="Ingrese Seguro de Cesantia del Trabajador">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="text-input">Descuentos de Salud</label>
                                     <div class="col-md-9">
-                                        <input type="number" v-model="descuentosSalud" class="form-control" placeholder="Ingrese los Descuentos de Salud del Empleado">
+                                        <input type="number" v-model="descuentosSalud" class="form-control" placeholder="Ingrese los Descuentos de Salud del Trabajador">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -334,6 +340,7 @@
                 jornada : '',
                 cargo : '',
                 tipo : '',
+                valorSalud : 0,
                 arrayEmpleado : [],
                 modal : 0,
                 tituloModal : '',
@@ -449,6 +456,7 @@
                     'descuentosSalud': this.descuentosSalud,
                     'estaoCivil': this.estaoCivil,
                     'jornada': this.jornada,
+                    'valorSalud': this.valorSalud,
                     'cargo': this.cargo,
                     'tipo': this.tipo,
                     'id_salud': this.id_salud,
@@ -480,6 +488,7 @@
                     'seguroCesantia': this.seguroCesantia,
                     'descuentosSalud': this.descuentosSalud,
                     'estaoCivil': this.estaoCivil,
+                    'valorSalud': this.valorSalud,
                     'jornada': this.jornada,
                     'cargo': this.cargo,
                     'tipo': this.tipo,
@@ -495,7 +504,7 @@
             },
             desactivarEmpleado(id_empleado){
                swal({
-                title: 'Esta seguri de desactivar esta Empleado?',
+                title: 'Esta seguri de desactivar esta Prevision?',
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -534,7 +543,7 @@
             },
             activarEmpleado(id_empleado){
                swal({
-                title: 'Esta seguri de activar esta Empleado?',
+                title: 'Esta seguri de activar esta Prevision?',
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -575,13 +584,13 @@
                 this.errorEmpleado=0;
                 this.errorMostrarMsjEmpleado =[];
 
-                if (!this.rut) this.errorMostrarMsjEmpleado.push("El RUT del Empleado no puede estar vacío.");
+                if (!this.rut) this.errorMostrarMsjEmpleado.push("El RUT del Trabajador no puede estar vacío.");
                 //if (!this.dv) this.errorMostrarMsjEmpleado.push("El Digito  Verificador no puede estar vacío.");
                 if (!this.nombre) this.errorMostrarMsjEmpleado.push("El campo Nombre no puede estar vacío.");
                 if (!this.apellido1) this.errorMostrarMsjEmpleado.push("El campo Apellido Paterno no puede estar vacío.");
                 if (!this.apellido2) this.errorMostrarMsjEmpleado.push("El campo Apellido Materno no puede estar vacío.");
-                if (!this.id_salud) this.errorMostrarMsjEmpleado.push("Tiene que seleccionar la Provision para la Empleado.");
-                if (!this.id_afp) this.errorMostrarMsjEmpleado.push("Tiene que seleccionar la AFP del Empleado.");
+                if (!this.id_salud) this.errorMostrarMsjEmpleado.push("Tiene que seleccionar la Prevision para la Trabajador.");
+                if (!this.id_afp) this.errorMostrarMsjEmpleado.push("Tiene que seleccionar la AFP del Trabajado.");
                 if (!this.fechaNnaci) this.errorMostrarMsjEmpleado.push("El Fecha Nacimiento no puede estar vacío.");
                 //if (!this.sexo) this.errorMostrarMsjEmpleado.push("El campo Sexo no puede estar vacío.");
                 //if (!this.diasVacas) this.errorMostrarMsjEmpleado.push("El campo Dias Vacaciones no puede estar vacío.");
@@ -592,6 +601,7 @@
                 if (!this.jornada) this.errorMostrarMsjEmpleado.push("El campo Jornada no puede estar vacío.");
                 if (!this.cargo) this.errorMostrarMsjEmpleado.push("El campo Cargo no puede estar vacío.");
                 if (!this.tipo) this.errorMostrarMsjEmpleado.push("El campo Tipo no puede estar vacío.");
+                if (!this.valorSalud) this.errorMostrarMsjEmpleado.push("El campo Tipo no puede estar vacío.");
 
                 if (this.errorMostrarMsjEmpleado.length) this.errorEmpleado = 1;
 
@@ -615,6 +625,7 @@
                 this.descuentosSalud = '';
                 this.estaoCivil = '';
                 this.jornada = '';
+                this.valorSalud = '';
                 this.cargo = '';
                 this.tipo = ''
             },
@@ -626,7 +637,7 @@
                             case 'registrar':
                             {
                                 this.modal = 1;
-                                this.tituloModal = 'Registrar Empleado';
+                                this.tituloModal = 'Registrar Trabajado';
                                 this.id_salud = 0;
                                 this.id_afp = 0;
                                 this.rut = '12345678';
@@ -643,6 +654,7 @@
                                 this.estaoCivil = '';
                                 this.jornada = '';
                                 this.cargo = '';
+                                this.valorSalud = '7',
                                 this.tipo = ''
                                 this.tipoAccion = 1;
                                 break;
@@ -651,7 +663,7 @@
                             {
                                 //console.log(data);
                                 this.modal=1;
-                                this.tituloModal = 'Actualizar Empleado';
+                                this.tituloModal = 'Actualizar Trabajado';
                                 this.tipoAccion = 2;
                                 this.id_id_empleado = data['id_empleado'];
                                 this.id_salud = data['id_salud'];
@@ -668,6 +680,7 @@
                                 this.seguroCesantia  = data['seguroCesantia'];
                                 this.descuentosSalud = data['descuentosSalud'];
                                 this.estaoCivil = data['estaoCivil'];
+                                this.valorSalud = data['valorSalud'];
                                 this.jornada = data['jornada'];
                                 this.cargo = data['cargo'];
                                 this.tipo = data['tipo'];

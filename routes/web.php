@@ -41,6 +41,7 @@ Route::post('/empresa/registrar', 'empresaController@store');
 Route::put('/empresa/actualizar', 'empresaController@update');
 Route::put('/empresa/desactivar', 'empresaController@desactivar');
 Route::put('/empresa/activar', 'empresaController@activar');
+Route::get('/empresa/selectEmpresa', 'EmpresaController@selectEmpresa');
 
 Route::get('/afp', 'afpController@index');
 Route::post('/afp/registrar', 'afpController@store');
@@ -61,3 +62,63 @@ Route::post('/empleado/registrar', 'empleadoController@store');
 Route::put('/empleado/actualizar', 'empleadoController@update');
 Route::put('/empleado/desactivar', 'empleadoController@desactivar');
 Route::put('/empleado/activar', 'empleadoController@activar');
+Route::get('/empleado/selectEmpleado', 'EmpleadoController@selectEmpleado');
+
+Route::get('/sucursal', 'sucursalController@index');
+Route::post('/sucursal/registrar', 'sucursalController@store');
+Route::put('/sucursal/actualizar', 'sucursalController@update');
+Route::put('/sucursal/desactivar', 'sucursalController@desactivar');
+Route::put('/sucursal/activar', 'sucursalController@activar');
+Route::get('/sucursal/selectSucursal', 'SucursalController@selectSucursal');
+
+Route::get('/finiquito', 'finiquitoController@index');
+Route::post('/finiquito/registrar', 'finiquitoController@store');
+Route::put('/finiquito/actualizar', 'finiquitoController@update');
+Route::put('/finiquito/desactivar', 'finiquitoController@desactivar');
+Route::put('/finiquito/activar', 'finiquitoController@activar');
+
+Route::get('/licencia', 'licenciaController@index');
+Route::post('/licencia/registrar', 'licenciaController@store');
+Route::put('/licencia/actualizar', 'licenciaController@update');
+Route::put('/licencia/desactivar', 'licenciaController@desactivar');
+Route::put('/licencia/activar', 'licenciaController@activar');
+
+Route::get('/carga', 'cargaController@index');
+Route::post('/carga/registrar', 'cargaController@store');
+Route::put('/carga/actualizar', 'cargaController@update');
+Route::put('/carga/desactivar', 'cargaController@desactivar');
+Route::put('/carga/activar', 'cargaController@activar');
+
+Route::get('/contrato', 'contratoController@index');
+Route::post('/contrato/registrar', 'contratoController@store');
+Route::put('/contrato/actualizar', 'contratoController@update');
+Route::put('/contrato/desactivar', 'contratoController@desactivar');
+Route::put('/contrato/activar', 'contratoController@activar');
+
+Route::get('/haber', 'haberController@index');
+Route::post('/haber/registrar', 'haberController@store');
+Route::put('/haber/actualizar', 'haberController@update');
+Route::put('/haber/desactivar', 'haberController@desactivar');
+Route::put('/haber/activar', 'haberController@activar');
+Route::get('/haber/selectHaber', 'HaberController@selectHaber');
+
+Route::get('/descuento', 'descuentoController@index');
+Route::post('/descuento/registrar', 'descuentoController@store');
+Route::put('/descuento/actualizar', 'descuentoController@update');
+Route::put('/descuento/desactivar', 'descuentoController@desactivar');
+Route::put('/descuento/activar', 'descuentoController@activar');
+Route::get('/descuento/selectDescuento', 'DescuentoController@selectDescuento');
+
+Route::get('/liquidacion', 'liquidacionController@index');
+Route::post('/liquidacion/registrar', 'liquidacionController@store');
+Route::put('/liquidacion/actualizar', 'liquidacionController@update');
+Route::put('/liquidacion/desactivar', 'liquidacionController@desactivar');
+Route::put('/liquidacion/activar', 'liquidacionController@activar');
+Route::get('/liquidacion/selectLiquidacion', 'LiquidacionController@selectLiquidacion');
+
+Route::get('/tablaDeValores', 'tablaDeValoresController@index');
+Route::post('/tablaDeValores/registrar', 'tablaDeValoresController@store');
+Route::put('/tablaDeValores/actualizar', 'tablaDeValoresController@update');
+Route::put('/tablaDeValores/desactivar', 'tablaDeValoresController@desactivar');
+Route::put('/tablaDeValores/activar', 'tablaDeValoresController@activar');
+Route::get('/tablaDeValores/selectTablaDeValores', 'TablaDeValoresController@selectTablaDeValores');

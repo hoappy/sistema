@@ -9,6 +9,13 @@ use App\Empleado;
 class EmpleadoController extends Controller
 {
     
+    public function selectEmpleado(Request $request){
+        if (!$request->ajax()) return redirect('/');
+        $empleados = Empleado::where('estado','=','1')
+        ->select('id_empleado','nombre','apellido1','apellido2')->orderBy('nombre', 'asc')->get();
+        return ['empleados' => $empleados];
+    }
+    
     public function index(Request $request)
     {
         if (!$request->ajax()) return redirect('/');
@@ -19,14 +26,14 @@ class EmpleadoController extends Controller
         if ($buscar==''){
             $empleados = Empleado::join('afp','empleado.id_afp','=','afp.id_afp')
             ->join('salud','empleado.id_salud','=','salud.id_salud')
-            ->select('empleado.*', 'salud.provision as provision','salud.nombre as salud','salud.valor as valorSalud','afp.nombre as afp','afp.valor as valorAfp'
+            ->select('empleado.*', 'salud.provision as provision','salud.nombre as salud','afp.nombre as afp','afp.valor as valorAfp'
                 )
             ->orderBy('empleado.estado', 'desc')->paginate(15);
         }
         else{
             $empleados = Empleado::join('afp','empleado.id_afp','=','afp.id_afp')
             ->join('salud','empleado.id_salud','=','salud.id_salud')
-            ->select('empleado.*', 'salud.provision as provision','salud.nombre as salud','salud.valor as valorSalud','afp.nombre as afp','afp.valor as valorAfp'
+            ->select('empleado.*', 'salud.provision as provision','salud.nombre as salud','afp.nombre as afp','afp.valor as valorAfp'
                 )
             ->where('empleado'.$criterio, 'like', '%'. $buscar . '%')
             ->orderBy('empleado.estado', 'desc')->paginate(15);
@@ -72,6 +79,7 @@ class EmpleadoController extends Controller
         $empleado->estaoCivil = $request->estaoCivil;
         $empleado->jornada = $request->jornada;
         $empleado->cargo = $request->cargo;
+        $empleado->valorSalud = $request->valorSalud;
         $empleado->tipo = $request->tipo;
         $empleado->estado = '1';
         $empleado->save();
@@ -105,6 +113,7 @@ class EmpleadoController extends Controller
         $empleado->estaoCivil = $request->estaoCivil;
         $empleado->jornada = $request->jornada;
         $empleado->cargo = $request->cargo;
+        $empleado->valorSalud = $request->valorSalud;
         $empleado->tipo = $request->tipo;
         $empleado->estado = '1';
         $empleado->save();

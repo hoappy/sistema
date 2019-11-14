@@ -10,7 +10,7 @@
                 <!-- Ejemplo de tabla Listado -->
                 <div class="card">
                     <div class="card-header">
-                        <i class="fa fa-align-justify"></i> Provision de Salud
+                        <i class="fa fa-align-justify"></i> Prevision de Salud
                         <button type="button" @click="abrirModal('salud','registrar')" class="btn btn-secondary">
                             <i class="icon-plus"></i>&nbsp;Nuevo
                         </button>
@@ -22,7 +22,7 @@
                                     <select class="form-control col-md-3" v-model="criterio">
                                       <option value="nombre">Nombre</option>
                                       <option value="descripcion">Descripción</option>
-                                      <!--<option value="provision">Provision</option>-->
+                                      <!--<option value="provision">Prevision</option>-->
                                     </select>
                                     <input type="text" v-model="buscar" @keyup.enter="listarSalud(1,buscar,criterio)" class="form-control" placeholder="Texto a buscar">
                                     <button type="submit" @click="listarSalud(1,buscar,criterio)" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
@@ -34,7 +34,7 @@
                                 <tr>
                                     <th>Nombre</th>
                                     <th>Descripción</th>
-                                    <th>Provision</th>
+                                    <th>Prevision</th>
                                     <th>Estado</th>
                                     <th>Opciones</th>
                                 </tr>
@@ -109,7 +109,7 @@
                         <div class="modal-body">
                             <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
                                 <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="num-input">Provision</label>
+                                    <label class="col-md-3 form-control-label" for="num-input">Prevision</label>
                                     <div class="col-md-9">
                                         <select class="form-control" v-model="provision">
                                             <option value="" disabled>Seleccione</option>
@@ -151,12 +151,7 @@
                                         <input type="descripcion" v-model="descripcion" class="form-control" placeholder="Ingrese descripción">
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="text-input">Valor</label>
-                                    <div class="col-md-9">
-                                        <input type="valor" v-model="valor" class="form-control" placeholder="Ingrese el Valor">
-                                    </div>
-                                </div>
+                                
                                 <div v-show="errorSalud" class="form-group row div-error">
                                     <div class="text-center text-error">
                                         <div v-for="error in errorMostrarMsjSalud" :key="error" v-text="error">
@@ -189,7 +184,7 @@
                 nombre : '',
                 descripcion : '',
                 provision : '',
-                valor : 0,
+
                 arraySalud : [],
                 modal : 0,
                 tituloModal : '',
@@ -269,7 +264,7 @@
                     'nombre': this.nombre,
                     'descripcion': this.descripcion,
                     'provision': this.provision,
-                    'valor': this.valor
+
                 }).then(function (response) {
                     me.cerrarModal();
                     me.listarSalud(1,'','nombre');
@@ -288,7 +283,7 @@
                     'nombre': this.nombre,
                     'descripcion': this.descripcion,
                     'provision': this.provision,
-                    'valor': this.valor,
+
                     'id_salud': this.id_id_salud
                 }).then(function (response) {
                     me.cerrarModal();
@@ -299,7 +294,7 @@
             },
             desactivarSalud(id_salud){
                swal({
-                title: 'Esta seguro de desactivar esta Provision de Salud?',
+                title: 'Esta seguro de desactivar esta Prevision de Salud?',
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -338,7 +333,7 @@
             },
             activarSalud(id_salud){
                swal({
-                title: 'Esta seguro de activar esta Provision de Salud?',
+                title: 'Esta seguro de activar esta Prevision de Salud?',
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -379,10 +374,10 @@
                 this.errorSalud=0;
                 this.errorMostrarMsjSalud =[];
 
-                if (!this.nombre) this.errorMostrarMsjSalud.push("El nombre de la Provision de Salud no puede estar vacío.");
-                if (!this.descripcion) this.errorMostrarMsjSalud.push("la descripcion de la Provision de Salud no puede estar vacío.");
-                if (!this.provision) this.errorMostrarMsjSalud.push("El provision de la Provision de Salud no puede estar vacío.");
-                if (!this.provision) this.errorMostrarMsjSalud.push("El vampo Valor no puede estar vacío.");
+                if (!this.nombre) this.errorMostrarMsjSalud.push("El nombre de la Prevision de Salud no puede estar vacío.");
+                if (!this.descripcion) this.errorMostrarMsjSalud.push("la descripcion de la Prevision de Salud no puede estar vacío.");
+                if (!this.provision) this.errorMostrarMsjSalud.push("El provision de la Prevision de Salud no puede estar vacío.");
+
 
                 if (this.errorMostrarMsjSalud.length) this.errorSalud = 1;
 
@@ -394,7 +389,7 @@
                 this.nombre='';
                 this.descripcion='';
                 this.provision='';
-                this.valor=0;
+
             },
             abrirModal(modelo, accion, data = []){
                 switch(modelo){
@@ -404,7 +399,7 @@
                             case 'registrar':
                             {
                                 this.modal = 1;
-                                this.tituloModal = 'Registrar Provision de Salud';
+                                this.tituloModal = 'Registrar Prevision de Salud';
                                 this.nombre= '';
                                 this.descripcion = '';
                                 this.provision= '';
@@ -416,13 +411,13 @@
                             {
                                 //console.log(data);
                                 this.modal=1;
-                                this.tituloModal='Actualizar Provision de Salud';
+                                this.tituloModal='Actualizar Prevision de Salud';
                                 this.tipoAccion=2;
                                 this.id_id_salud=data['id_salud'];
                                 this.nombre = data['nombre'];
                                 this.descripcion= data['descripcion'];
                                 this.provision= data['provision'];
-                                this.provision=data['valor'];
+
                                 break;
                             }
                         }

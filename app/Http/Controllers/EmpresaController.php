@@ -8,6 +8,13 @@ use App\Empresa;
 
 class EmpresaController extends Controller
 {
+
+    public function selectEmpresa(Request $request){
+        if (!$request->ajax()) return redirect('/');
+        $empresas = Empresa::where('estado','=','1')
+        ->select('id_empresa','razonSocial','rut','dv')->orderBy('razonSocial', 'asc')->get();
+        return ['empresas' => $empresas];
+    }
     
     public function index(Request $request)
     {

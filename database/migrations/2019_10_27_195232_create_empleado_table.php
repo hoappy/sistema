@@ -29,6 +29,7 @@ class CreateEmpleadoTable extends Migration
             $table->integer('seguroCesantia');
             $table->integer('descuentosSalud');
             $table->string('estaoCivil');
+            $table->integer('valorSalud');
             $table->string('jornada');
             $table->string('cargo');
             $table->string('tipo');

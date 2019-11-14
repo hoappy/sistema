@@ -18,7 +18,6 @@ class CreateSaludTable extends Migration
             $table->string('nombre');
             $table->string('descripcion');
             $table->boolean('provision');
-            $table->integer('valor');
             $table->boolean('estado')->default(1);
             $table->timestamps();
         });

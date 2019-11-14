@@ -22,6 +22,15 @@ Vue.component('empresa', require('./components/Empresa.vue'));
 Vue.component('afp', require('./components/Afp.vue'));
 Vue.component('salud', require('./components/Salud.vue'));
 Vue.component('empleado', require('./components/Empleado.vue'));
+Vue.component('sucursal', require('./components/Sucursal.vue'));
+Vue.component('finiquito', require('./components/Finiquito.vue'));
+Vue.component('licencia', require('./components/Licencia.vue'));
+Vue.component('carga', require('./components/Carga.vue'));
+Vue.component('haber', require('./components/Haber.vue'));
+Vue.component('descuento', require('./components/Descuento.vue'));
+Vue.component('liquidacion', require('./components/Liquidacion.vue'));
+Vue.component('contrato', require('./components/Contrato.vue'));
+Vue.component('tabla', require('./components/Tabla.vue'));
 
 
 const app = new Vue({

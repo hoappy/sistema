@@ -17,8 +17,14 @@ class Empresa extends Model
     public function representante(){
         return $this->belongsTo('App\Representante');
     }
+    public function contrato(){
+        return $this->belongsTo('App\Contrato');
+    }
     public function cdc(){
         return $this->hasOne('App\Cdc');
+    }
+    public function sucursalEmpresa(){
+        return $this->hasMany('App\Empresa');
     }
 
 }

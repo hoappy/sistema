@@ -25,11 +25,7 @@
         </template>
 
         <template v-if="menu==5">
-            <main class="main">
-                <div class="container-fluid">
-                    <h1>Inicio 5</h1>
-                </div>
-            </main>
+            <contrato></contrato>
         </template>
 
         <template v-if="menu==6">
@@ -45,65 +41,48 @@
         </template>
 
         <template v-if="menu==9">
-            <main class="main">
-                <div class="container-fluid">
-                    <h1>Inicio 9</h1>
-                </div>
-            </main>
+            <sucursal></sucursal>
         </template>
 
         <template v-if="menu==10">
-            <main class="main">
-                <div class="container-fluid">
-                    <h1>Inicio 10</h1>
-                </div>
-            </main>
+            
+            <carga></carga>
         </template>
 
         <template v-if="menu==11">
-            <main class="main">
-                <div class="container-fluid">
-                    <h1>Inicio 11</h1>
-                </div>
-            </main>
+           
+            <licencia></licencia>
         </template>
 
         <template v-if="menu==12">
-            <main class="main">
-                <div class="container-fluid">
-                    <h1>Inicio 12</h1>
-                </div>
-            </main>
+            
+            <finiquito></sucursal>
         </template>
 
         <template v-if="menu==13">
-            <main class="main">
-                <div class="container-fluid">
-                    <h1>Inicio 13</h1>
-                </div>
-            </main>
+            
+            <liquidacion></liquidacion>
+        </template>
+
+        <template v-if="menu==18">
+            
+            <tabla></tabla>
         </template>
 
         <template v-if="menu==14">
-            <main class="main">
-                <div class="container-fluid">
-                    <h1>Inicio 14</h1>
-                </div>
-            </main>
+            
+            <descuento></descuento>
         </template>
 
         <template v-if="menu==15">
-            <main class="main">
-                <div class="container-fluid">
-                    <h1>Inicio 15</h1>
-                </div>
-            </main>
+            
+            <haber></haber>
         </template>
 
         <template v-if="menu==16">
             <main class="main">
                 <div class="container-fluid">
-                    <h1>Inicio 16</h1>
+                    <h1>Inicio 17 / ayuda</h1>
                 </div>
             </main>
         </template>
@@ -111,7 +90,7 @@
         <template v-if="menu==17">
             <main class="main">
                 <div class="container-fluid">
-                    <h1>Inicio 17</h1>
+                    <h1>Inicio 18 / acerca de</h1>
                 </div>
             </main>
         </template>
